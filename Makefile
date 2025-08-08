@@ -1,11 +1,13 @@
-.PHONY: init gitconf zsh vim custom conda tmux
+.PHONY: pc server gitconf zsh vim custom conda tmux
 
 export XDG_DATA_HOME = $(HOME)/.local/share
 export XDG_CONFIG_HOME = $(HOME)/.config
 export XDG_CACHE_HOME = $(HOME)/.cache
 export XDG_STATE_HOME = $(HOME)/.local/state
 
-init: pre gitconf zsh vim tmux custom
+pc: server
+
+server: pre gitconf zsh vim tmux custom
 
 pre:
 	mkdir -p $(XDG_DATA_HOME)

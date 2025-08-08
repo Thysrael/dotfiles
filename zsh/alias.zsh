@@ -6,6 +6,7 @@ else
 	alias ls="ls --color=auto"
 fi
 alias ll="ls -Al"
+export LS_COLORS="$LS_COLORS:di=38;5;39" # more light blue
 alias grep="grep --color=auto"
 command -v bat >/dev/null 2>&1
 if [ $? -eq 0 ]; then

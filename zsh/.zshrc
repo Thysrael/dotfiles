@@ -13,6 +13,7 @@ setopt HIST_IGNORE_ALL_DUPS # History won't save duplicates.
 setopt HIST_FIND_NO_DUPS # History won't show duplicates on search.
 
 # dump
+autoload -Uz compinit
 compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
 
 # plugins

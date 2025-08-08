@@ -3,4 +3,12 @@
 	email = thysrael@163.com
 [init]
 	defaultBranch = main
-
+[pull]
+	rebase = true
+[github]
+	user = thysrael
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
