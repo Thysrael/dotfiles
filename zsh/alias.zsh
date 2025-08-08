@@ -1,4 +1,4 @@
-alias python="python3"
+# colorful
 command -v lsd >/dev/null 2>&1
 if [ $? -eq 0 ]; then
     alias ls="lsd --color=auto"
@@ -7,15 +7,10 @@ else
 fi
 alias ll="ls -Al"
 alias grep="grep --color=auto"
-alias ga="git add ."
-alias gc="git commit -m"
-alias gp="git push"
-alias gl="git log --graph --oneline --decorate "
 command -v bat >/dev/null 2>&1
 if [ $? -eq 0 ]; then
 	alias cat="bat -p --theme Dracula"
 fi
-
 # mb: start blink
 # md: start blod
 # me: turn off bold, blink and underline
@@ -35,3 +30,16 @@ man() {
         man "$@"
 }
 
+# git
+alias ga="git add ."
+alias gc="git commit -m"
+alias gp="git push"
+alias gl="git log --graph --oneline --decorate "
+
+# tmux
+alias tl="tmux ls"
+alias ta="tmux attach -t"
+alias tk="tmux kill-session -t"
+
+# misc
+alias python="python3"

@@ -1,14 +1,17 @@
-.PHONY: init gitconf zsh vim custom conda
+.PHONY: init gitconf zsh vim custom conda tmux
 
 export XDG_DATA_HOME = $(HOME)/.local/share
 export XDG_CONFIG_HOME = $(HOME)/.config
 export XDG_CACHE_HOME = $(HOME)/.cache
 export XDG_STATE_HOME = $(HOME)/.local/state
 
-init: pre gitconf zsh vim custom
+init: pre gitconf zsh vim tmux custom
 
 pre:
+	mkdir -p $(XDG_DATA_HOME)
 	mkdir -p $(XDG_CONFIG_HOME)
+	mkdir -p $(XDG_CACHE_HOME)
+	mkdir -p $(XDG_STATE_HOME)
 
 gitconf:
 	mkdir -p $(XDG_CONFIG_HOME)/git
@@ -34,3 +37,6 @@ conda:
 	bash ./Miniconda3-latest-Linux-x86_64.sh
 	rm ./Miniconda3-latest-Linux-x86_64.sh
 	rm ./Miniconda3-latest-Linux-x86_64.sh.1
+
+tmux:
+	ln -sfn $(PWD)/tmux $(XDG_CONFIG_HOME)/tmux
