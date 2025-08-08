@@ -1,11 +1,11 @@
-.PHONY: pc server gitconf zsh vim custom conda tmux
+.PHONY: pc server gitconf zsh vim custom conda tmux font
 
 export XDG_DATA_HOME = $(HOME)/.local/share
 export XDG_CONFIG_HOME = $(HOME)/.config
 export XDG_CACHE_HOME = $(HOME)/.cache
 export XDG_STATE_HOME = $(HOME)/.local/state
 
-pc: server
+pc: server font
 
 server: pre gitconf zsh vim tmux custom
 
@@ -42,3 +42,7 @@ conda:
 
 tmux:
 	ln -sfn $(PWD)/tmux $(XDG_CONFIG_HOME)/tmux
+
+font:
+	mkdir -p $(XDG_CONFIG_HOME)/fontconfig
+	ln -sfn $(PWD)/fonts.conf $(XDG_CONFIG_HOME)/fontconfig/fonts.conf
