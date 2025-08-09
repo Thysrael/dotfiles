@@ -1,13 +1,16 @@
 .PHONY: pc server gitconf zsh vim custom conda tmux font kitty
+.PHONY:	clean-gitconfig clean-zsh clean-vim clean-tmux clean-font clean-kitty
 
 export XDG_DATA_HOME = $(HOME)/.local/share
 export XDG_CONFIG_HOME = $(HOME)/.config
 export XDG_CACHE_HOME = $(HOME)/.cache
 export XDG_STATE_HOME = $(HOME)/.local/state
 
-pc: server font kitty
+linux: server font kitty
 
 server: pre gitconf zsh vim tmux custom
+
+clean-server: clean-gitconf clean-zsh clean-vim clean-tmux
 
 pre:
 	mkdir -p $(XDG_DATA_HOME)
@@ -16,18 +19,26 @@ pre:
 	mkdir -p $(XDG_STATE_HOME)
 
 gitconf:
-	mkdir -p $(XDG_CONFIG_HOME)/git
-	ln -sfn $(PWD)/gitconfig $(XDG_CONFIG_HOME)/git/config
+	ln -sfn $(PWD)/git $(XDG_CONFIG_HOME)/
+
+clean-gitconf:
+	rm -r $(XDG_CONFIG_HOME)/git
 
 zsh:
 	mkdir -p $(XDG_STATE_HOME)/zsh
 	mkdir -p $(XDG_CACHE_HOME)/zsh
-	ln -sfn $(PWD)/zsh $(XDG_CONFIG_HOME)/zsh
-	ln -sfn $(PWD)/zsh/.zshenv ~/.zshenv
+	ln -sfn $(PWD)/zsh $(XDG_CONFIG_HOME)/
+	ln -sfn $(PWD)/zsh/.zshenv ~/
+
+clean-zsh:
+	rm $(XDG_CONFIG_HOME)/zsh
+	rm ~/.zshenv
 
 vim:
-	mkdir -p $(XDG_CONFIG_HOME)/vim
-	ln -sfn $(PWD)/vimrc $(XDG_CONFIG_HOME)/vim/vimrc
+	ln -sfn $(PWD)/vim $(XDG_CONFIG_HOME)/
+
+clean-vim:
+	rm -r $(XDG_CONFIG_HOME)/vim
 
 custom:
 	if [ -f custom.sh ]; then \
@@ -43,9 +54,17 @@ conda:
 tmux:
 	ln -sfn $(PWD)/tmux $(XDG_CONFIG_HOME)/tmux
 
+clean-tmux:
+	rm -r $(XDG_CONFIG_HOME)/tmux
+
 font:
-	mkdir -p $(XDG_CONFIG_HOME)/fontconfig
-	ln -sfn $(PWD)/fonts.conf $(XDG_CONFIG_HOME)/fontconfig/fonts.conf
+	ln -sfn $(PWD)/fontconfig $(XDG_CONFIG_HOME)/
+
+clean-font:
+	rm -r $(XDG_CONFIG_HOME)/fontconfig
 
 kitty:
 	ln -sfn $(PWD)/kitty $(XDG_CONFIG_HOME)/kitty
+
+clean-kitty:
+	rm -r $(XDG_CONFIG_HOME)/kitty
