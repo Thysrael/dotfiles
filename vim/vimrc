@@ -26,17 +26,56 @@ let g:netrw_home = $XDG_DATA_HOME."/vim"
 call mkdir($XDG_DATA_HOME."/vim/spell", 'p', 0700)
 call mkdir($XDG_STATE_HOME."/vim", 'p', 0700)
 
+"UI"
 set number
 set relativenumber
 set numberwidth=2
-
-set ignorecase
-set smartcase
-
+set ruler
 set cursorline
+set nowrap
+set showcmd                                                                                          
+set showmode
+set showmatch
+syntax on
+colorscheme sorbet
 
+"Search"
+set hlsearch                    " highlight searches "
+set incsearch                   " do incremental searching, search as you type "
+set ignorecase                  " ignore case when searching "
+set smartcase                   " no ignorecase if Uppercase char present "
+
+"Tab"
 set tabstop=4
 set softtabstop=4
-" set expandtab
+set smarttab
+set expandtab
 
-syntax on
+"File"
+set autoread
+set nocompatible
+set nobackup
+
+"Encoding"
+set encoding=utf-8  
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+set fileformats=unix,dos,mac  
+set termencoding=utf-8                                                                                                                                     
+set formatoptions+=m
+set formatoptions+=B
+
+"Keybinding"
+nnoremap H 0
+nnoremap L g_
+xnoremap H 0
+xnoremap L g_
+onoremap H 0
+onoremap L g_
+nnoremap U <C-r>
+
+"FileType"
+filetype on
+filetype plugin on
+filetype indent on
+autocmd FileType python set tabstop=4 shiftwidth=4 expandtab ai
+autocmd FileType ruby set tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai
