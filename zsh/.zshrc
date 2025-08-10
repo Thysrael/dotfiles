@@ -24,12 +24,6 @@ source $ZSH/powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f $ZSH/.p10k.zsh ]] || source $ZSH/.p10k.zsh
 
-# zoxide
-command -v zoxide >/dev/null 2>&1
-if [ $? -eq 0 ]; then
-	eval "$(zoxide init zsh)"
-fi
-
 # alias
 source $ZSH/alias.zsh
 # custom

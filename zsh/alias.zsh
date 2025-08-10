@@ -43,5 +43,12 @@ alias ta="tmux attach -t"
 alias tk="tmux kill-session -t"
 alias tn="tmux new -s"
 
+# zoxide
+command -v zoxide >/dev/null 2>&1
+if [ $? -eq 0 ]; then
+	eval "$(zoxide init zsh)"
+    alias cd="z"
+fi
+
 # misc
 alias python="python3"
