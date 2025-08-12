@@ -1,4 +1,4 @@
-.PHONY: pc server gitconf zsh vim custom conda tmux font kitty
+.PHONY: pc server gitconf zsh vim custom conda tmux font kitty rime-linux
 .PHONY:	clean-gitconfig clean-zsh clean-vim clean-tmux clean-font clean-kitty
 
 export XDG_DATA_HOME = $(HOME)/.local/share
@@ -6,7 +6,7 @@ export XDG_CONFIG_HOME = $(HOME)/.config
 export XDG_CACHE_HOME = $(HOME)/.cache
 export XDG_STATE_HOME = $(HOME)/.local/state
 
-linux: server font kitty
+linux: server font kitty rime-linux
 
 server: pre gitconf zsh vim tmux custom
 
@@ -68,3 +68,13 @@ kitty:
 
 clean-kitty:
 	rm -r $(XDG_CONFIG_HOME)/kitty
+
+rime-linux:
+	@if [ -d $(XDG_DATA_HOME)/fcitx5/rime ]; then \
+		ln -sfn $(PWD)/rime/default.custom.yaml $(XDG_DATA_HOME)/fcitx5/rime/; \
+	else \
+		echo "You havn't install rime-ice"; \
+	fi
+
+clean-rime-linux:
+	rm $(XDG_DATA_HOME)/fcitx5/rime/default.custom.yaml
