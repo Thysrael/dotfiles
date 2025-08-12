@@ -64,7 +64,7 @@ clean-font:
 	rm -r $(XDG_CONFIG_HOME)/fontconfig
 
 kitty:
-	ln -sfn $(PWD)/kitty $(XDG_CONFIG_HOME)/kitty
+	ln -sfn $(PWD)/kitty $(XDG_CONFIG_HOME)/
 
 clean-kitty:
 	rm -r $(XDG_CONFIG_HOME)/kitty
