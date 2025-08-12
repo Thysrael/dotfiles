@@ -9,7 +9,7 @@ patch:
     color_scheme: purity_of_form_custom
     color_scheme_dark: purity_of_form_custom
     candidate_list_layout: linear
-    candidate_format: '[label].[candidate][comment]'
+    candidate_format: '[label]. [candidate] [comment]'
 
   preset_color_schemes:
     # 对 purity_of_form 略微调整颜色，让色彩更柔和点，补全其他选项和注释
@@ -18,11 +18,12 @@ patch:
       author: 雨過之後、佛振
       # 如果将字体设置为 PingFangSC-Regular
       # 会让 🈶🈚️🉑🈲🉐 这几个 Emoji 失去彩色效果，留空反而可以显示。。。
-      font_face: "Maple Mono NF CN"                   # 字体及大小
+      # font_face: "Maple Mono NF CN"                   # 字体及大小
+      font_face: "PingFang SC"
       font_point: 14
       # label_font_face: "JetBrains Mono"    # 序号字体及大小
       label_font_point: 12
-      comment_font_face: "Maple Mono NF CN"  # 注字体及大小
+      comment_font_face: "PingFang SC"  # 注字体及大小
       comment_font_point: 12
       # candidate_list_layout: stacked        # 候选项排列方向 stacked(默认) | linear
       # text_orientation: horizontal          # 文字排列方向 horizontal(默认) | vertical
