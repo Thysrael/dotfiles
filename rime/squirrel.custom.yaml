@@ -1,0 +1,58 @@
+patch:
+  app_options:
+    net.kovidgoyal.kitty:
+      ascii_mode: true
+      no_inline: true
+      vim_mode: true
+
+  style:
+    # 选择皮肤，亮色与暗色主题
+    color_scheme: purity_of_form_custom
+    color_scheme_dark: purity_of_form_custom
+    candidate_list_layout: linear
+    candidate_format: '[label].[candidate][comment]'
+
+  preset_color_schemes:
+    # 对 purity_of_form 略微调整颜色，让色彩更柔和点，补全其他选项和注释
+    purity_of_form_custom:
+      name: "純粹的形式／Purity of Form Custom"
+      author: 雨過之後、佛振
+      # 如果将字体设置为 PingFangSC-Regular
+      # 会让 🈶🈚️🉑🈲🉐 这几个 Emoji 失去彩色效果，留空反而可以显示。。。
+      font_face: "Maple Mono NF CN"                   # 字体及大小
+      font_point: 14
+      # label_font_face: "JetBrains Mono"    # 序号字体及大小
+      label_font_point: 12
+      comment_font_face: "Maple Mono NF CN"  # 注字体及大小
+      comment_font_point: 12
+      # candidate_list_layout: stacked        # 候选项排列方向 stacked(默认) | linear
+      # text_orientation: horizontal          # 文字排列方向 horizontal(默认) | vertical
+      inline_preedit: true                    # 键入码（拼音）是否显示在键入位置 true | false
+      inline_candidate: false                 # 候选项（词句）是否显示在键入位置 true | false
+      translucency: false                     # 磨砂： true | false
+      mutual_exclusive: false                 # 色不叠加： true | false
+      border_height: 6                        # 外边框 高
+      border_width: 4                         # 外边框 宽
+      corner_radius: 4                       # 外边框 圆角半径
+      hilited_corner_radius: 3                # 选中框 圆角半径
+      surrounding_extra_expansion: 0          # 候选项背景相对大小？
+      shadow_size: 0                          # 阴影大小
+      line_spacing: 0                         # 行间距
+      base_offset: 0                          # 字基高
+      alpha: 0.9                                # 透明度，0~1
+      spacing: 0                             # 拼音与候选项之间的距离 （inline_preedit: false）
+      color_space: srgb                       # 色彩空间： srgb | display_p3
+      back_color: 0x221B16                    # 底色
+      hilited_candidate_back_color: 0x7CCF72  # 选中底色
+      label_color: 0xFFD6A5                   # 序号颜色
+      hilited_candidate_label_color: 0x4C4C4C # 选中序号颜色
+      candidate_text_color: 0xFFD6A5          # 文字颜色
+      hilited_candidate_text_color: 0x000000  # 选中文字颜色
+      comment_text_color: 0xFFD6A5            # 注颜色
+      hilited_comment_text_color: 0x808080    # 选中注颜色
+      text_color: 0x808080                    # 拼音颜色 （inline_preedit: false）
+      hilited_text_color: 0xEEEEEE            # 选中拼音颜色 （inline_preedit: false）
+      # candidate_back_color:                 # 候选项底色
+      # preedit_back_color:                   # 拼音底色 （inline_preedit: false）
+      # hilited_back_color:                   # 选中拼音底色 （inline_preedit: false）
+      # border_color:                         # 外边框颜色

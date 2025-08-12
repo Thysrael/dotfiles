@@ -1,4 +1,5 @@
-.PHONY: pc server gitconf zsh vim custom conda tmux font kitty rime-linux
+.PHONY: mac linux pc server
+.PHONY: gitconf zsh vim custom conda tmux font kitty rime-linux rime-mac
 .PHONY:	clean-gitconfig clean-zsh clean-vim clean-tmux clean-font clean-kitty
 
 export XDG_DATA_HOME = $(HOME)/.local/share
@@ -6,7 +7,11 @@ export XDG_CONFIG_HOME = $(HOME)/.config
 export XDG_CACHE_HOME = $(HOME)/.cache
 export XDG_STATE_HOME = $(HOME)/.local/state
 
-linux: server font kitty rime-linux
+mac: rime-mac
+
+linux: rime-linux
+
+pc: server font kitty
 
 server: pre gitconf zsh vim tmux custom
 
@@ -78,3 +83,19 @@ rime-linux:
 
 clean-rime-linux:
 	rm $(XDG_DATA_HOME)/fcitx5/rime/default.custom.yaml
+
+rime-mac:
+	@if [ -d $(HOME)/Library/Rime ]; then \
+		ln -sfn $(PWD)/rime/default.custom.yaml $(HOME)/Library/Rime/; \
+		ln -sfn $(PWD)/rime/squirrel.custom.yaml $(HOME)/Library/Rime/; \
+		ln -sfn $(PWD)/rime/rime_ice.custom.yaml $(HOME)/Library/Rime/; \
+	else \
+		echo "You havn't install rime-ice"; \
+	fi
+
+clean-rime-mac:
+	rm $(HOME)/Library/Rime/default.custom.yaml
+	rm $(HOME)/Library/Rime/squirrel.custom.yaml
+	rm $(HOME)/Library/Rime/rime_ice.custom.yaml
+
+
