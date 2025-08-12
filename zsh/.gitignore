@@ -1,2 +1,4 @@
 .zcompdump
 custom.zsh
+.zsh_history
+.zsh_sessions
