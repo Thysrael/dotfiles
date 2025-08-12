@@ -2,7 +2,6 @@ patch:
   app_options:
     net.kovidgoyal.kitty:
       ascii_mode: true
-      no_inline: true
       vim_mode: true
 
   style:
