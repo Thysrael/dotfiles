@@ -5,3 +5,5 @@ export XDG_STATE_HOME="$HOME/.local/state"
 
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export PATH="$HOME/.local/bin:/usr/local/bin:$PATH"
+
+export LESSHISTFILE="$XDG_STATE_HOME"/less/history
