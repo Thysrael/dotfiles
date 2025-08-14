@@ -39,7 +39,7 @@ patch:
       shadow_size: 0                          # 阴影大小
       line_spacing: 0                         # 行间距
       base_offset: 0                          # 字基高
-      alpha: 0.9                                # 透明度，0~1
+      alpha: 0.96                                # 透明度，0~1
       spacing: 0                             # 拼音与候选项之间的距离 （inline_preedit: false）
       color_space: srgb                       # 色彩空间： srgb | display_p3
       back_color: 0x221B16                    # 底色
