@@ -1,15 +1,15 @@
 .PHONY: mac linux pc server
-.PHONY: gitconf zsh vim custom conda tmux font kitty rime-linux rime-mac
-.PHONY:	clean-gitconfig clean-zsh clean-vim clean-tmux clean-font clean-kitty
+.PHONY: gitconf zsh vim custom conda tmux font kitty rime-linux rime-mac karabiner
+.PHONY: clean-gitconfig clean-zsh clean-vim clean-tmux clean-font clean-kitty clean-karabiner
 
 export XDG_DATA_HOME = $(HOME)/.local/share
 export XDG_CONFIG_HOME = $(HOME)/.config
 export XDG_CACHE_HOME = $(HOME)/.cache
 export XDG_STATE_HOME = $(HOME)/.local/state
 
-mac: rime-mac
+mac: pc rime-mac karabiner
 
-linux: rime-linux
+linux: pc rime-linux
 
 pc: server font kitty
 
@@ -98,4 +98,8 @@ clean-rime-mac:
 	rm $(HOME)/Library/Rime/squirrel.custom.yaml
 	rm $(HOME)/Library/Rime/rime_ice.custom.yaml
 
+karabiner:
+	ln -sfn $(PWD)/karabiner $(XDG_CONFIG_HOME)/
 
+clean-karabiner:
+	rm $(XDG_CONFIG_HOME)/karabiner
