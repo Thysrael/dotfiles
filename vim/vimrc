@@ -73,6 +73,14 @@ onoremap H 0
 onoremap L g_
 nnoremap U <C-r>
 
+
+inoremap <C-f> <Right>
+inoremap <C-b> <Left>
+inoremap <C-n> <Down>
+inoremap <C-p> <Up>
+inoremap <C-a> <Home>
+inoremap <C-e> <End>
+
 "FileType"
 filetype on
 filetype plugin on
