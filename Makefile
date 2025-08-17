@@ -1,6 +1,6 @@
 .PHONY: mac linux pc server
-.PHONY: gitconf zsh vim custom conda tmux font kitty rime-linux rime-mac karabiner
-.PHONY: clean-gitconfig clean-zsh clean-vim clean-tmux clean-font clean-kitty clean-karabiner
+.PHONY: gitconf zsh vim custom conda tmux font kitty rime-linux rime-mac karabiner yazi
+.PHONY: clean-gitconfig clean-zsh clean-vim clean-tmux clean-font clean-kitty clean-karabiner clean-yazi
 
 export XDG_DATA_HOME = $(HOME)/.local/share
 export XDG_CONFIG_HOME = $(HOME)/.config
@@ -11,7 +11,7 @@ mac: pc rime-mac karabiner
 
 linux: pc rime-linux
 
-pc: server font kitty
+pc: server font kitty yazi
 
 server: pre gitconf zsh vim tmux custom
 
@@ -103,3 +103,11 @@ karabiner:
 
 clean-karabiner:
 	rm $(XDG_CONFIG_HOME)/karabiner
+
+yazi:
+	ln -sfn $(PWD)/yazi $(XDG_CONFIG_HOME)/
+	ya pkg install
+
+clean-yazi:
+	rm $(XDG_CONFIG_HOME)/yazi
+

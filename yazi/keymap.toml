@@ -1,0 +1,4 @@
+[[mgr.prepend_keymap]]
+on  = "y"
+run = [ 'shell -- osascript -e "set the clipboard to (POSIX file \"$@\")"', "yank" ]
+for = "macos"
