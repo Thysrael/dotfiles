@@ -10,7 +10,7 @@ export LS_COLORS="$LS_COLORS:di=38;5;39" # more light blue
 alias grep="grep --color=auto"
 command -v bat >/dev/null 2>&1
 if [ $? -eq 0 ]; then
-	alias cat="bat -p --paging=never --theme Dracula"
+	alias cat="bat -p --paging=never --theme gruvbox-dark"
 fi
 # mb: start blink
 # md: start blod
