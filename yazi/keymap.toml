@@ -45,6 +45,7 @@ run  = "plugin chmod"
 desc = "Chmod on selected files"
 
 [[mgr.prepend_keymap]]
-on   = "R"
+on   = "b"
 run  = "plugin zoxide"
 desc = "use zoxide to open history directory"
+
