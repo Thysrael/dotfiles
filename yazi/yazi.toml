@@ -5,6 +5,7 @@ ratio = [1, 3, 3]
 
 [preview]
 wrap = "yes"
+max_width = 1080
 
 [opener]
 open = [
