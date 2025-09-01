@@ -12,6 +12,16 @@ command -v bat >/dev/null 2>&1
 if [ $? -eq 0 ]; then
 	alias cat="bat -p --paging=never --theme gruvbox-dark"
 fi
+command -v yazi >/dev/null 2>&1
+if [ $? -eq 0 ]; then
+    function y() {
+        local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+        yazi "$@" --cwd-file="$tmp"
+        IFS= read -r -d '' cwd < "$tmp"
+        [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+        rm -f -- "$tmp"
+    }
+fi
 # mb: start blink
 # md: start blod
 # me: turn off bold, blink and underline
@@ -29,7 +39,7 @@ man() {
         LESS_TERMCAP_us=$(printf "\e[4;32m") \
         LESS_TERMCAP_ue=$(printf "\e[0m") \
         man "$@"
-}
+    }
 
 # git
 alias ga="git add ."
@@ -46,7 +56,7 @@ alias tn="tmux new -s"
 # zoxide
 command -v zoxide >/dev/null 2>&1
 if [ $? -eq 0 ]; then
-	eval "$(zoxide init zsh)"
+    eval "$(zoxide init zsh)"
     alias cd="z"
 fi
 
