@@ -9,9 +9,9 @@ export XDG_STATE_HOME = $(HOME)/.local/state
 
 mac: pc rime-mac karabiner
 
-linux: pc rime-linux
+linux: pc rime-linux font
 
-pc: server font kitty yazi
+pc: server kitty yazi
 
 server: pre gitconf zsh vim tmux custom
 
