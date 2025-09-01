@@ -3,6 +3,31 @@ use = "yazi-rs/plugins:full-border"
 rev = "e95c7b3"
 hash = "3996fc74044bc44144b323686f887e1"
 
+[[plugin.deps]]
+use = "Gallardo994/clippy"
+rev = "8ce5541"
+hash = "977c6f4ffceada33ced20d941f1defab"
+
+[[plugin.deps]]
+use = "KKV9/compress"
+rev = "c264639"
+hash = "e17c11b605d989568a1d1741ca17c584"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:smart-enter"
+rev = "d7588f6"
+hash = "56fdabc96fc1f4d53c96eb884b02a5be"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:piper"
+rev = "d7588f6"
+hash = "2143a53182dbbe935a1abd1623424aa5"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:chmod"
+rev = "d7588f6"
+hash = "1adc12c2b2b025411ab61eb8f0879574"
+
 [[flavor.deps]]
 use = "dangooddd/kanagawa"
 rev = "1f3b3c7"
