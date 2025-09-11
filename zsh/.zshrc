@@ -28,5 +28,9 @@ source $ZSH/powerlevel10k/powerlevel10k.zsh-theme
 
 # alias
 source $ZSH/alias.zsh
+
+# fzf
+source $ZSH/fzf.zsh
+
 # custom
 [[ ! -f $ZSH/custom.zsh ]] || source $ZSH/custom.zsh
