@@ -17,6 +17,8 @@ autoload -Uz compinit
 compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
 # ignore case
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+# keybinding styles, very useful for vscode and nvim terminal on macos
+bindkey -e
 
 # plugins
 ZSH="$XDG_CONFIG_HOME/zsh"
