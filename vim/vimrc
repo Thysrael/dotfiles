@@ -33,7 +33,7 @@ set numberwidth=2
 set ruler
 set cursorline
 set nowrap
-set showcmd                                                                                          
+set showcmd
 set showmode
 set showmatch
 syntax on
@@ -57,20 +57,20 @@ set nocompatible
 set nobackup
 
 "Encoding"
-set encoding=utf-8  
+set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 set fileformats=unix,dos,mac  
-set termencoding=utf-8                                                                                                                                     
+set termencoding=utf-8
 set formatoptions+=m
 set formatoptions+=B
 
 "Keybinding"
-nnoremap H 0
-nnoremap L g_
-xnoremap H 0
-xnoremap L g_
-onoremap H 0
-onoremap L g_
+nnoremap H ^
+nnoremap L $
+xnoremap H ^
+xnoremap L $
+onoremap H ^
+onoremap L $
 nnoremap U <C-r>
 
 
