@@ -6,6 +6,9 @@ patch:
     com.microsoft.VSCode:
       assii_mode: true
       vim_mode: true
+    dev.zed.Zed:
+      assii_mode: true
+      vim_mode: true
 
   style:
     # 选择皮肤，亮色与暗色主题
