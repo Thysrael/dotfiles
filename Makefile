@@ -1,6 +1,6 @@
 .PHONY: mac linux pc server
-.PHONY: gitconf zsh vim custom conda tmux font kitty rime-linux rime-mac karabiner yazi hammerspoon zed
-.PHONY: clean-gitconfig clean-zsh clean-vim clean-tmux clean-font clean-kitty clean-karabiner clean-yazi clean-hammerspoon clean-zed
+.PHONY: gitconf zsh vim custom conda tmux font kitty rime-linux rime-mac karabiner yazi hammerspoon
+.PHONY: clean-gitconfig clean-zsh clean-vim clean-tmux clean-font clean-kitty clean-karabiner clean-yazi clean-hammerspoon
 
 export XDG_DATA_HOME = $(HOME)/.local/share
 export XDG_CONFIG_HOME = $(HOME)/.config
@@ -11,7 +11,7 @@ mac: pc rime-mac karabiner hammerspoon
 
 linux: pc rime-linux font
 
-pc: server kitty yazi zed
+pc: server kitty yazi
 
 server: pre gitconf zsh vim tmux custom
 
@@ -116,10 +116,4 @@ hammerspoon:
 
 clean-hammerspoon:
 	rm $(XDG_CONFIG_HOME)/hammerspoon
-
-zed:
-	ln -sfn $(PWD)/zed $(XDG_CONFIG_HOME)/
-
-clean-zed:
-	rm $(XDG_CONFIG_HOME)/zed
 
