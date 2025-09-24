@@ -13,17 +13,28 @@ open = [
 	{ run = 'open "$@"', desc = "Open" },
 ]
 
-[[plugin.prepend_previewers]]
-name = "*.tar*"
-run  = 'piper --format=url -- tar tf "$1"'
+[plugin]
+prepend_preloaders = [
+  { mime = "{audio,video,image}/*", run = "mediainfo" },
+  { mime = "application/subrip", run = "mediainfo" },
+  { mime = "application/postscript", run = "mediainfo" },
+]
 
-[[plugin.prepend_previewers]]
-name = "*.csv"
-run  = 'piper -- bat -p --color=always "$1"'
+prepend_previewers = [
+  { mime = "{audio,video,image}/*", run = "mediainfo"},
+  { mime = "application/subrip", run = "mediainfo" },
+  { mime = "application/postscript", run = "mediainfo" },
 
-[[plugin.prepend_previewers]]
-name = "*.md"
-run  = 'piper -- CLICOLOR_FORCE=1 glow -w=$w -s=dark "$1"'
+  { name = "*.tar*", run = 'piper --format=url -- tar tf "$1"' },
+  { name = "*.csv", run = 'piper -- bat -p --color=always "$1"' },
+  { name = "*.md", run = 'piper -- CLICOLOR_FORCE=1 glow -w=$w -s=dark "$1"' },
+]
+
+# For a large file like Adobe Illustrator, Adobe Photoshop, etc
+# you may need to increase the memory limit if no image is rendered.
+# https://yazi-rs.github.io/docs/configuration/yazi#tasks
+[tasks]
+  image_alloc      = 1073741824        # = 1024*1024*1024 = 1024MB
 
 # [[plugin.prepend_preloaders]]
 # name = "*.docx"

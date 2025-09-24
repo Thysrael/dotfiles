@@ -28,6 +28,11 @@ use = "yazi-rs/plugins:chmod"
 rev = "d7588f6"
 hash = "1adc12c2b2b025411ab61eb8f0879574"
 
+[[plugin.deps]]
+use = "boydaihungst/mediainfo"
+rev = "2093ab7"
+hash = "16a10359fc2a3cd8cc8bcfbe00f744d3"
+
 [[flavor.deps]]
 use = "dangooddd/kanagawa"
 rev = "1f3b3c7"
