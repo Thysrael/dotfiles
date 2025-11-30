@@ -34,5 +34,8 @@ source $ZSH/alias.zsh
 # fzf
 source $ZSH/fzf.zsh
 
+# zoxide
+source $ZSH/zoxide.zsh
+
 # custom
 [[ ! -f $ZSH/custom.zsh ]] || source $ZSH/custom.zsh
