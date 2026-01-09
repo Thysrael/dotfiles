@@ -1,6 +1,6 @@
 .PHONY: mac linux pc server
-.PHONY: gitconf zsh vim custom conda tmux font kitty rime-linux rime-mac karabiner yazi hammerspoon
-.PHONY: clean-gitconfig clean-zsh clean-vim clean-tmux clean-font clean-kitty clean-karabiner clean-yazi clean-hammerspoon
+.PHONY: gitconf zsh vim custom conda tmux font kitty rime-linux rime-mac karabiner yazi hammerspoon clang-format
+.PHONY: clean-gitconfig clean-zsh clean-vim clean-tmux clean-font clean-kitty clean-karabiner clean-yazi clean-hammerspoon clean-clang-format
 
 export XDG_DATA_HOME = $(HOME)/.local/share
 export XDG_CONFIG_HOME = $(HOME)/.config
@@ -13,9 +13,9 @@ linux: pc rime-linux font
 
 pc: server kitty yazi
 
-server: pre gitconf zsh vim tmux custom
+server: pre gitconf zsh vim tmux clang-format custom
 
-clean-server: clean-gitconf clean-zsh clean-vim clean-tmux
+clean-server: clean-gitconf clean-zsh clean-vim clean-tmux clean-clang-format
 
 pre:
 	mkdir -p $(XDG_DATA_HOME)
@@ -117,3 +117,8 @@ hammerspoon:
 clean-hammerspoon:
 	rm $(XDG_CONFIG_HOME)/hammerspoon
 
+clang-format:
+	ln -sfn $(PWD)/clang-format/.clang-format $(HOME)/
+
+clean-clang-format:
+	rm $(HOME)/.clang-format
