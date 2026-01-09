@@ -55,3 +55,4 @@ alias tn="tmux new -s"
 
 # misc
 alias python="python3"
+alias wget='wget --hsts-file=\"$XDG_DATA_HOME/wget-hsts\"'
