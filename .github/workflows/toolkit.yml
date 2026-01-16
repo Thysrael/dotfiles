@@ -24,6 +24,7 @@ jobs:
     needs: prepare
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         # Define the architectures you want to support here
         arch: [amd64, arm64]
@@ -41,7 +42,16 @@ jobs:
           OUT="bin"
           mkdir -p $OUT
 
-          echo "🚀 Building for target: $TARGET"
+          if [ "${{ matrix.arch }}" = "amd64" ]; then
+            RUST_ARCH="x86_64"
+            MATCH_STR="x86_64-unknown-linux-musl"
+          elif [ "${{ matrix.arch }}" = "arm64" ]; then
+            RUST_ARCH="aarch64"
+            MATCH_STR="aarch64-unknown-linux-musl"
+          fi
+
+          echo "🚀 Architecture: $TARGET"
+          echo "🎯 Strict Match: $MATCH_STR"
 
           # === 📥 Tools List ===
           # Format: ./eget <repo> --system $TARGET --to $OUT/ <optional: --tag v1.0.0>
@@ -68,7 +78,7 @@ jobs:
 
           # 6. ripgrep (rg)
           echo "⬇️ ripgrep..."
-          ./eget BurntSushi/ripgrep --asset "musl" --asset "tar.gz" --asset "$RUST_ARCH" --system $TARGET --to $OUT/rg
+          ./eget BurntSushi/ripgrep --asset "$MATCH_STR" --system $TARGET --to $OUT/rg
 
           # 7. zoxide
           echo "⬇️ zoxide..."
