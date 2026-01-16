@@ -48,15 +48,15 @@ jobs:
 
           # 1. bat
           echo "⬇️ bat..."
-          ./eget sharkdp/bat --system $TARGET --to $OUT/
+          ./eget sharkdp/bat --system $TARGET --asset "musl" --asset "tar.gz" --to $OUT/
 
           # 2. fd
           echo "⬇️ fd..."
-          ./eget sharkdp/fd --system $TARGET --to $OUT/
+          ./eget sharkdp/fd --system $TARGET --asset "musl" --asset "tar.gz" --to $OUT/
 
           # 3. fzf (fzf release package structure is special, directly download binary)
           echo "⬇️ fzf..."
-          ./eget junegunn/fzf --system $TARGET --to $OUT/
+          ./eget junegunn/fzf --system $TARGET --asset "tar.gz" --to $OUT/
 
           # 4. lazygit
           echo "⬇️ lazygit..."
@@ -64,15 +64,15 @@ jobs:
 
           # 5. lsd
           echo "⬇️ lsd..."
-          ./eget lsd-rs/lsd --system $TARGET --to $OUT/
+          ./eget lsd-rs/lsd --system $TARGET --asset "musl" --asset "tar.gz" --to $OUT/
 
           # 6. ripgrep (rg)
           echo "⬇️ ripgrep..."
-          ./eget BurntSushi/ripgrep --system $TARGET --to $OUT/rg
+          ./eget BurntSushi/ripgrep --system $TARGET --asset "musl" --asset "tar.gz" --to $OUT/rg
 
           # 7. zoxide
           echo "⬇️ zoxide..."
-          ./eget ajeetdsouza/zoxide --system $TARGET --to $OUT/
+          ./eget ajeetdsouza/zoxide --system $TARGET --asset "musl" --asset "tar.gz" --to $OUT/
 
           # === ✅ Packaging ===
           echo "📦 Compressing..."
