@@ -1,6 +1,9 @@
-# use `**<TAB>` to start fzf
-# fzf shell intergration
-source <(fzf --zsh)
+command -v fzf >/dev/null 2>&1
 
-export FZF_DEFAULT_OPTS="--style full --height 40% --layout=reverse"
-# export FZF_DEFAULT_OPTS='--preview "bat --style=numbers --color=always --line-range :500 {}"'
+if [ $? -eq 0 ]; then
+    # use `**<TAB>` to start fzf
+    # fzf shell intergration
+    source <(fzf --zsh)
+    export FZF_DEFAULT_OPTS="--style full --height 40% --layout=reverse"
+    # export FZF_DEFAULT_OPTS='--preview "bat --style=numbers --color=always --line-range :500 {}"'
+fi

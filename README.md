@@ -44,3 +44,10 @@ make linux # the programs on linux
 - [lsd](https://github.com/lsd-rs/lsd) (Optional): a better `ls` with nerd icons.
 - [bat](https://github.com/sharkdp/bat) (Optional): a better `cat` with syntax highlights.
 - [zoxide](https://github.com/ajeetdsouza/zoxide) (Optional): a better `cd` with fuzzy jump.
+- [fzf](https://github.com/junegunn/fzf) (Optional): fuzzy search everything.
+
+All these optional dependencies can be installed by this command:
+
+``` shell
+./toolkit.sh
+```
