@@ -68,7 +68,7 @@ jobs:
 
           # 6. ripgrep (rg)
           echo "⬇️ ripgrep..."
-          ./eget BurntSushi/ripgrep --system $TARGET --asset "musl" --asset "tar.gz" --to $OUT/rg
+          ./eget BurntSushi/ripgrep --asset "musl" --asset "tar.gz" --asset "$RUST_ARCH" --system $TARGET --to $OUT/rg
 
           # 7. zoxide
           echo "⬇️ zoxide..."
