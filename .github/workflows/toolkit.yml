@@ -44,7 +44,7 @@ jobs:
 
           if [ "${{ matrix.arch }}" = "amd64" ]; then
             RUST_ARCH="x86_64"
-            MATCH_STR="x86_64-unknown-linux-gnu"
+            MATCH_STR="x86_64-unknown-linux-musl"
           elif [ "${{ matrix.arch }}" = "arm64" ]; then
             RUST_ARCH="aarch64"
             MATCH_STR="aarch64-unknown-linux-gnu"
