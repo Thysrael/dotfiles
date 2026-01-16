@@ -1,5 +1,7 @@
 # Thysrael's Dotfiles
 
+![overview](./static/overview.png)
+
 ## Build
 
 This project is built by the makefile and softlink of Unix, which is very naive and easy-reading.
