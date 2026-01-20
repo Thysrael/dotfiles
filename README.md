@@ -30,6 +30,9 @@ If you get bored, you can using the following command to clear the config:
 make clean-tmux
 ```
 
+> [!WARNING]
+> The deployment of programs may remove the origin configal files. So It's important to backup the original files.
+
 Futhermore, you can using the following commands to link all the config files:
 
 ``` shell
