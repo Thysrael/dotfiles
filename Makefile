@@ -30,6 +30,7 @@ clean-gitconf:
 	rm -r $(XDG_CONFIG_HOME)/git
 
 zsh:
+	chsh -s $(which zsh)
 	mkdir -p $(XDG_STATE_HOME)/zsh
 	mkdir -p $(XDG_CACHE_HOME)/zsh
 	ln -sfn $(PWD)/zsh $(XDG_CONFIG_HOME)/
