@@ -30,9 +30,11 @@ clean-gitconf:
 	rm -r $(XDG_CONFIG_HOME)/git
 
 zsh:
-	chsh -s $$(which zsh)
 	mkdir -p $(XDG_STATE_HOME)/zsh
 	mkdir -p $(XDG_CACHE_HOME)/zsh
+	@if [ "$$(basename "$$SHELL")" != "zsh" ]; then \
+		chsh -s $$(which zsh); \
+	fi
 	ln -sfn $(PWD)/zsh $(XDG_CONFIG_HOME)/
 	ln -sfn $(PWD)/zsh/.zshenv ~/
 
