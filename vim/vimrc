@@ -102,7 +102,7 @@ set showcmd
 set showmode
 set showmatch
 syntax on
-" colorscheme sorbet
+silent! colorscheme sorbet
 
 "Search"
 set hlsearch                    " highlight searches "
