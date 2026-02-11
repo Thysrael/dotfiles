@@ -1,2 +1,5 @@
 [flavor]
 dark = "kanagawa"
+
+[indicator]
+padding = { open = "█", close = "█" }
