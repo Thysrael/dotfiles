@@ -1,22 +1,32 @@
 require("full-border"):setup()
-Status:children_add(function(self)
-	local h = self._current.hovered
-	if h and h.link_to then
-		return " -> " .. tostring(h.link_to)
-	else
-		return ""
-	end
-end, 3300, Status.LEFT)
 
--- add symbol link in status line
-Status:children_add(function(self)
+-- home shortcut in status line
+function Status:name()
 	local h = self._current.hovered
-	if h and h.link_to then
-		return " -> " .. tostring(h.link_to)
-	else
-		return ""
+	if not h then
+		return ui.Span("")
 	end
-end, 3300, Status.LEFT)
+
+	local home = os.getenv("HOME")
+	local function format_path(p)
+		p = tostring(p)
+		if home and p:sub(1, #home) == home then
+			return "~" .. p:sub(#home + 1)
+		end
+		return p
+	end
+
+	local path = format_path(h.url)
+	if h.link_to then
+		local target = " -> " .. format_path(h.link_to)
+		return ui.Line {
+			ui.Span(" " .. path),
+			th.mgr.symlink_target and ui.Span(target):style(th.mgr.symlink_target) or ui.Span(target),
+		}
+	else
+		return ui.Span(" " .. path)
+	end
+end
 
 -- add user:group in status line
 Status:children_add(function()
