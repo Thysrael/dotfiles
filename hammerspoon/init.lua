@@ -1,3 +1,4 @@
+local kittyPrevApp = nil
 hs.hotkey.bind({}, "F12", function()
     local APP_NAME = "kitty"
     local app = hs.application.get(APP_NAME)
@@ -11,8 +12,14 @@ hs.hotkey.bind({}, "F12", function()
             local ratio = winFrame.h / screenFrame.h
             hs.settings.set("kitty_dropdown_ratio", ratio)
         end
+
+        if kittyPrevApp and kittyPrevApp:isRunning() then
+            kittyPrevApp:activate()
+        end
         app:hide()
+        kittyPrevApp = nil
     else
+        kittyPrevApp = hs.application.frontmostApplication()
         hs.application.launchOrFocus(APP_NAME)
 
         -- Use a timer to ensure we capture the window after it focuses/launches
@@ -43,13 +50,19 @@ hs.hotkey.bind({}, "F12", function()
     end
 end)
 
+local wechatPrevApp = nil
 hs.hotkey.bind({}, "F10", function()
     local APP_NAME = "WeChat"
     local app = hs.application.get(APP_NAME)
 
     if app and app:isFrontmost() then
+        if wechatPrevApp and wechatPrevApp:isRunning() then
+            wechatPrevApp:activate()
+        end
         app:hide()
+        wechatPrevApp = nil
     else
+        wechatPrevApp = hs.application.frontmostApplication()
         hs.application.launchOrFocus(APP_NAME)
     end
 end)
