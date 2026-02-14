@@ -1,58 +1,79 @@
 # Thysrael's Dotfiles
 
+![Build Status](https://img.shields.io/github/actions/workflow/status/Thysrael/dotfiles/toolkit.yml?style=flat-square&label=Build)
+![Top Language](https://img.shields.io/github/languages/top/Thysrael/dotfiles?style=flat-square)
+![License](https://img.shields.io/github/license/Thysrael/dotfiles?style=flat-square)
+![Last Commit](https://img.shields.io/github/last-commit/Thysrael/dotfiles?style=flat-square)
+
 ![overview](./static/overview.png)
 
-## Build
+<p align="center">
+    <strong>Manage dotfiles using only <code>make</code>, soft link and <code>git</code>.</strong> <br />
+    Transparent and Easy to deploy.
+</p>
 
-This project is built by the makefile and softlink of Unix, which is very naive and easy-reading.
+## Overview
 
-Firstly, you need clone the repo to anywhere you want:
+This project leverages **GNU Make** and Unix **symbolic links** for configuration management. This approach is designed to be **minimalist**, **transparent**, and **auditable**, avoiding the complexity of dedicated dotfile managers.
 
-``` shell
+## Getting Started
+
+### 1. Clone the repository
+
+Clone the repository to your desired location:
+
+```shell
 git clone --recursive https://github.com/Thysrael/dotfiles.git
+cd dotfiles
 ```
 
-Every config of a program corresponds to a target in `Makefile`. For example, you can use the following command to config `tmux`:
+### 2. Dependencies
 
-``` shell
+The core system depends only on:
+- [make](https://www.gnu.org/software/make/)
+
+**Optional Enhancements:**
+The following modern CLI tools are recommended for the full experience. You can install them using the provided helper script:
+
+```shell
+./toolkit.sh
+```
+
+- [Maple Nerd Font](https://github.com/subframe7536/maple-font): Or any preferred [Nerd Font](https://www.nerdfonts.com/).
+- [lsd](https://github.com/lsd-rs/lsd): A modern replacement for `ls`.
+- [bat](https://github.com/sharkdp/bat): A `cat` clone with syntax highlighting.
+- [zoxide](https://github.com/ajeetdsouza/zoxide): A smarter `cd` command.
+- [fzf](https://github.com/junegunn/fzf): A general-purpose command-line fuzzy finder.
+
+## Usage
+
+Configuration is managed via `make` targets. Each program's configuration corresponds to a specific target in the `Makefile`.
+
+### Individual Configuration
+
+To configure a specific tool (e.g., `tmux`):
+
+```shell
 make tmux
 ```
 
-Then try tmux and see how it improves your experience:
+To roll back changes (remove symlinks):
 
-``` shell
-tmux
-```
-
-If you get bored, you can using the following command to clear the config:
-
-``` shell
+```shell
 make clean-tmux
 ```
 
+### Batch Deployment
+
+Deploy configurations for specific environments:
+
+```shell
+make server # core tools for headless servers
+make linux  # full suite for Linux desktops
+```
+
 > [!WARNING]
-> The deployment of programs may remove the origin configal files. So It's important to backup the original files.
+> **Backup your data**: Deployment replaces existing configuration files with symbolic links. While `make` is generally safe, it is highly recommended to backup your original config files before running these commands.
 
-Futhermore, you can using the following commands to link all the config files:
-
-``` shell
-make server # the programs on cli server
-make linux # the programs on linux
-```
-
-> Notice the `gitconfig` is my personal info, you should change it to yourself.
-
-## Dependencies
-
-- [make](https://www.gnu.org/software/make/)
-- [Maple Nerd Font](https://github.com/subframe7536/maple-font) (Optional): or any fonts you like with nerd icons.
-- [lsd](https://github.com/lsd-rs/lsd) (Optional): a better `ls` with nerd icons.
-- [bat](https://github.com/sharkdp/bat) (Optional): a better `cat` with syntax highlights.
-- [zoxide](https://github.com/ajeetdsouza/zoxide) (Optional): a better `cd` with fuzzy jump.
-- [fzf](https://github.com/junegunn/fzf) (Optional): fuzzy search everything.
-
-All these optional dependencies can be installed by this command:
-
-``` shell
-./toolkit.sh
-```
+> [!NOTE]
+> The `gitconfig` includes personal references. Please update `git/config` with your own details after installation.
