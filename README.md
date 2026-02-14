@@ -70,6 +70,7 @@ Deploy configurations for specific environments:
 ```shell
 make server # core tools for headless servers
 make linux  # full suite for Linux desktops
+make mac    # full suite for MacOS desktops
 ```
 
 > [!WARNING]
