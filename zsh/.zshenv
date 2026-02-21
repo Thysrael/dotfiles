@@ -23,4 +23,10 @@ export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
 export W3M_DIR="$XDG_DATA_HOME"/w3m
 
 # Vim
-export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
+export VIMINIT='
+if has("nvim")
+    source $XDG_CONFIG_HOME/nvim/init.lua
+else
+    let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc"
+    source $MYVIMRC
+endif'
