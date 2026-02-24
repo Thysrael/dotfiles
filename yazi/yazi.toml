@@ -34,9 +34,11 @@ prepend_previewers = [
   { mime = "application/subrip", run = "mediainfo" },
   { mime = "application/postscript", run = "mediainfo" },
 
-  { name = "*.tar*", run = 'piper --format=url -- tar tf "$1"' },
-  { name = "*.csv", run = 'piper -- bat -p --color=always "$1"' },
-  { name = "*.md", run = 'piper -- CLICOLOR_FORCE=1 glow -w=$w -s=dark "$1"' },
+  { url = "*.docx", run = 'piper -- pandoc -t markdown "$1" | CLICOLOR_FORCE=1 glow -w=$w -s=dark -' },
+  { url = "*.pptx", run = 'piper -- pandoc -t markdown "$1" | CLICOLOR_FORCE=1 glow -w=$w -s=dark -' },
+  { url = "*.tar*", run = 'piper -- format=url -- tar tf "$1"' },
+  { url = "*.csv", run = 'piper -- bat -p --color=always "$1"' },
+  { url = "*.md", run = 'piper -- CLICOLOR_FORCE=1 glow -w=$w -s=dark "$1"' },
 ]
 
 # For a large file like Adobe Illustrator, Adobe Photoshop, etc
@@ -44,27 +46,3 @@ prepend_previewers = [
 # https://yazi-rs.github.io/docs/configuration/yazi#tasks
 [tasks]
   image_alloc      = 1073741824        # = 1024*1024*1024 = 1024MB
-
-# [[plugin.prepend_preloaders]]
-# name = "*.docx"
-# run  = "office"
-#
-# [[plugin.prepend_previewers]]
-# name = "*.docx"
-# run  = "office"
-#
-# [[plugin.prepend_preloaders]]
-# name = "*.pptx"
-# run  = "office"
-#
-# [[plugin.prepend_previewers]]
-# name = "*.pptx"
-# run  = "office"
-#
-# [[plugin.prepend_preloaders]]
-# name = "*.doc"
-# run  = "office"
-#
-# [[plugin.prepend_previewers]]
-# name = "*.doc"
-# run  = "office"
