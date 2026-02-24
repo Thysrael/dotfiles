@@ -9,8 +9,17 @@ max_width = 3000
 max_height = 3000
 
 [opener]
-open = [
-	{ run = 'open "$@"', desc = "Open" },
+drawio = [
+	{ run = 'open -a "draw.io" "$@"', desc = "Open with draw.io", for = "macos" },
+]
+
+[open]
+prepend_rules = [
+	{ url = "*.drawio", use = [ "drawio", "reveal" ] },
+	{ mime = "text/*",                    use = [ "edit", "open", "reveal" ] },
+	{ mime = "application/{json,ndjson}", use = [ "edit", "open", "reveal" ] },
+	{ mime = "*/javascript",              use = [ "edit", "open", "reveal" ] },
+	{ mime = "inode/empty",               use = [ "edit", "open", "reveal" ] },
 ]
 
 [plugin]
