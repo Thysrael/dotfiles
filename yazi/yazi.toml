@@ -8,14 +8,11 @@ wrap = "yes"
 max_width = 3000
 max_height = 3000
 
-[opener]
-drawio = [
-	{ run = 'open -a "draw.io" "$@"', desc = "Open with draw.io", for = "macos" },
-]
-
 [open]
 prepend_rules = [
-	{ url = "*.drawio", use = [ "drawio", "reveal" ] },
+   # reorder the rules to make drawio files open with the default app instead of being previewed in Yazi
+	{ url = "*.drawio", use = [ "open", "edit", "reveal" ] },
+  { url = "*.graffle", use = [ "open", "edit", "reveal" ] },
 	{ mime = "text/*",                    use = [ "edit", "open", "reveal" ] },
 	{ mime = "application/{json,ndjson}", use = [ "edit", "open", "reveal" ] },
 	{ mime = "*/javascript",              use = [ "edit", "open", "reveal" ] },
