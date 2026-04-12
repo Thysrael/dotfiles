@@ -363,6 +363,11 @@ run = 'move-node-to-workspace B'
 if.app-name-regex-substring = 'Cherry Studio'
 run = 'move-node-to-workspace C'
 
+# System dialogs/prompts: keep floating in current workspace
+[[on-window-detected]]
+if.app-name-regex-substring = 'SecurityAgent'
+run = 'layout floating'
+
 # Catch-all: all other apps go to M (Main)
 [[on-window-detected]]
 run = 'move-node-to-workspace M'
