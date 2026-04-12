@@ -1,6 +1,6 @@
 .PHONY: mac linux pc server
-.PHONY: gitconf zsh vim custom conda tmux font kitty rime-linux rime-mac karabiner yazi hammerspoon clang-format aerospace
-.PHONY: clean-gitconfig clean-zsh clean-vim clean-tmux clean-font clean-kitty clean-karabiner clean-yazi clean-hammerspoon clean-clang-format clean-aerospace
+.PHONY: gitconf zsh vim custom conda tmux font kitty rime-linux rime-mac karabiner yazi hammerspoon clang-format aerospace opencode
+.PHONY: clean-gitconfig clean-zsh clean-vim clean-tmux clean-font clean-kitty clean-karabiner clean-yazi clean-hammerspoon clean-clang-format clean-aerospace clean-opencode
 
 export XDG_DATA_HOME = $(HOME)/.local/share
 export XDG_CONFIG_HOME = $(HOME)/.config
@@ -131,3 +131,9 @@ aerospace:
 
 clean-aerospace:
 	rm $(XDG_CONFIG_HOME)/aerospace
+
+opencode:
+	ln -sfn $(PWD)/opencode $(XDG_CONFIG_HOME)/
+
+clean-opencode:
+	rm $(XDG_CONFIG_HOME)/opencode
