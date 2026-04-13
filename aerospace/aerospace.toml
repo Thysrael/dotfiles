@@ -341,6 +341,11 @@ run = 'move-node-to-workspace T'
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'WeChat'
+if.window-title-regex-substring = '图片|视频|Image|Video'
+run = ['layout floating']
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'WeChat'
 run = 'move-node-to-workspace W'
 
 [[on-window-detected]]
