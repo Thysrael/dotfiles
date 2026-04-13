@@ -1,0 +1,10 @@
+{
+  "$schema": "https://opencode.ai/tui.json",
+  "scroll_speed": 4,
+  "keybinds": {
+    "leader": "ctrl+x",
+    "session_interrupt": "escape",
+    "session_timeline": "<leader>g",
+    "session_compact": "<leader>c"
+  }
+}

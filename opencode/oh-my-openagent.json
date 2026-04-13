@@ -1,8 +1,8 @@
 {
   "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-openagent/dev/assets/oh-my-opencode.schema.json",
   "agents": {
-    "hephaestus": {
-      "model": "opencode/gpt-5-nano"
+    "sisyphus": {
+      "model": "opencode-go/kimi-k2.5"
     },
     "oracle": {
       "model": "opencode/gpt-5-nano"
@@ -11,7 +11,12 @@
       "model": "opencode/gpt-5-nano"
     },
     "explore": {
-      "model": "opencode/gpt-5-nano"
+      "model": "opencode/gpt-5-nano",
+      "fallback_models": [
+        {
+          "model": "opencode-go/minimax-m2.7-highspeed"
+        }
+      ]
     },
     "multimodal-looker": {
       "model": "opencode/gpt-5-nano"
@@ -26,9 +31,22 @@
       "model": "opencode/gpt-5-nano"
     },
     "atlas": {
-      "model": "opencode/gpt-5-nano"
+      "model": "opencode/gpt-5-nano",
+      "fallback_models": [
+        {
+          "model": "opencode-go/minimax-m2.7"
+        }
+      ]
     },
     "sisyphus-junior": {
+      "model": "opencode/gpt-5-nano",
+      "fallback_models": [
+        {
+          "model": "opencode-go/minimax-m2.7"
+        }
+      ]
+    },
+    "hephaestus": {
       "model": "opencode/gpt-5-nano"
     }
   },
@@ -42,19 +60,34 @@
     "deep": {
       "model": "opencode/gpt-5-nano"
     },
-    "artistry": {
-      "model": "opencode/gpt-5-nano"
-    },
     "quick": {
       "model": "opencode/gpt-5-nano"
     },
     "unspecified-low": {
-      "model": "opencode/gpt-5-nano"
+      "model": "opencode/gpt-5-nano",
+      "fallback_models": [
+        {
+          "model": "opencode-go/minimax-m2.7"
+        }
+      ]
     },
     "unspecified-high": {
-      "model": "opencode/gpt-5-nano"
+      "model": "opencode/gpt-5-nano",
+      "fallback_models": [
+        {
+          "model": "opencode-go/minimax-m2.7"
+        }
+      ]
     },
     "writing": {
+      "model": "opencode/gpt-5-nano",
+      "fallback_models": [
+        {
+          "model": "opencode-go/minimax-m2.7"
+        }
+      ]
+    },
+    "artistry": {
       "model": "opencode/gpt-5-nano"
     }
   }
