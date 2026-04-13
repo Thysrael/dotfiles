@@ -13,9 +13,9 @@ linux: pc rime-linux font
 
 pc: server kitty yazi
 
-server: pre gitconf zsh vim tmux clang-format custom
+server: pre gitconf zsh vim tmux clang-format npm custom
 
-clean-server: clean-gitconf clean-zsh clean-vim clean-tmux clean-clang-format
+clean-server: clean-gitconf clean-zsh clean-vim clean-tmux clean-clang-format clean-npm
 
 pre:
 	mkdir -p $(XDG_DATA_HOME)
