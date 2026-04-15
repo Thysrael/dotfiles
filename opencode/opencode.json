@@ -1,6 +1,11 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "model": "opencode-go/kimi-k2.5",
+  "permission": {
+    "git add *": "deny",
+    "git commit *": "deny",
+    "git push": "deny"
+  },
   "plugin": [
     "oh-my-openagent@latest"
   ]
