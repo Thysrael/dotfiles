@@ -360,6 +360,11 @@ run = 'move-node-to-workspace N'
 if.app-name-regex-substring = 'Zotero'
 run = 'move-node-to-workspace Z'
 
+# macOS system auth dialog (Touch ID/Face ID/password prompts): float in current workspace
+[[on-window-detected]]
+if.app-name-regex-substring = 'coreautha'
+run = 'layout floating'
+
 [[on-window-detected]]
 if.app-name-regex-substring = 'Google Chrome'
 run = 'move-node-to-workspace B'
