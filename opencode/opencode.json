@@ -2,9 +2,42 @@
   "$schema": "https://opencode.ai/config.json",
   "model": "opencode-go/kimi-k2.5",
   "permission": {
+<<<<<<< HEAD
     "git add *": "deny",
     "git commit *": "deny",
     "git push": "deny"
+=======
+    "bash": {
+      "*": "allow",
+      "git add *": "deny",
+      "git commit *": "deny",
+      "git push *": "deny",
+      "git reset *": "ask",
+      "git stash *": "ask",
+      "git checkout *": "ask",
+      "git restore *": "ask",
+      "git clean *": "ask",
+      "git revert *": "ask",
+      "git cherry-pick *": "ask",
+      "git rebase *": "ask",
+      "git merge *": "ask"
+    },
+    "zsh": {
+      "*": "allow",
+      "git add *": "deny",
+      "git commit *": "deny",
+      "git push *": "deny",
+      "git reset *": "ask",
+      "git stash *": "ask",
+      "git checkout *": "ask",
+      "git restore *": "ask",
+      "git clean *": "ask",
+      "git revert *": "ask",
+      "git cherry-pick *": "ask",
+      "git rebase *": "ask",
+      "git merge *": "ask"
+    }
+>>>>>>> 67e7620 (feat(opencode): limit the git permission)
   },
   "plugin": [
     "oh-my-openagent@latest"
