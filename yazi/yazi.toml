@@ -11,6 +11,10 @@ max_height = 3000
 [open]
 prepend_rules = [
    # reorder the rules to make drawio files open with the default app instead of being previewed in Yazi
+  { url = "*.doc", use = [ "open", "reveal", "edit" ] },
+  { url = "*.docx", use = [ "open", "reveal", "edit" ] },
+  { url = "*.ppt", use = [ "open", "reveal", "edit" ] },
+  { url = "*.pptx", use = [ "open", "reveal", "edit" ] },
 	{ url = "*.drawio", use = [ "open", "edit", "reveal" ] },
   { url = "*.graffle", use = [ "open", "edit", "reveal" ] },
 	{ mime = "text/*",                    use = [ "edit", "open", "reveal" ] },
