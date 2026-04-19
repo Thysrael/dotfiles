@@ -58,6 +58,23 @@
                                 "type": "basic"
                             }
                         ]
+                    },
+                    {
+                        "description": "ESC key sends alt-m (aerospace handles the workspace toggle)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "escape"
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "m",
+                                        "modifiers": ["left_option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
                     }
                 ]
             },
