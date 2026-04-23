@@ -112,8 +112,8 @@ on-mode-changed = []
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#focus
     alt-h = 'focus left'
-    alt-j = 'focus down'
-    alt-k = 'focus up'
+    alt-j = 'focus --boundaries-action wrap-around-the-workspace dfs-prev'
+    alt-k = 'focus --boundaries-action wrap-around-the-workspace dfs-next'
     alt-l = 'focus right'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move
