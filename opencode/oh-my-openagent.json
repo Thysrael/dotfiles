@@ -2,81 +2,122 @@
   "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-openagent/dev/assets/oh-my-opencode.schema.json",
   "agents": {
     "sisyphus": {
-      "model": "opencode-go/kimi-k2.5",
-      "fallback_models": ["opencode-go/glm-5.1"]
+      "model": "openai/gpt-5.4",
+      "fallback_models": [
+        "openai/gpt-5.4-mini"
+      ]
     },
     "oracle": {
-      "model": "opencode-go/kimi-k2.5",
-      "fallback_models": ["opencode-go/glm-5.1", "opencode-go/minimax-m2.7"]
+      "model": "openai/gpt-5.4",
+      "fallback_models": [
+        "openai/gpt-5.4-mini"
+      ]
     },
     "librarian": {
-      "model": "opencode-go/minimax-m2.7",
-      "fallback_models": ["opencode-go/mimo-v2-pro"]
+      "model": "openai/gpt-5.4-mini",
+      "fallback_models": [
+        "openai/gpt-5.4"
+      ]
     },
     "explore": {
-      "model": "opencode-go/minimax-m2.7",
-      "fallback_models": ["opencode-go/mimo-v2-pro"]
+      "model": "openai/gpt-5.4-mini",
+      "fallback_models": [
+        "openai/gpt-5.4"
+      ]
     },
     "multimodal-looker": {
-      "model": "opencode-go/kimi-k2.5",
-      "fallback_models": ["opencode-go/glm-5.1"]
+      "model": "openai/gpt-5.4",
+      "fallback_models": [
+        "openai/gpt-5.4-mini"
+      ]
     },
     "prometheus": {
-      "model": "opencode-go/kimi-k2.5",
-      "fallback_models": ["opencode-go/glm-5.1"]
+      "model": "openai/gpt-5.4",
+      "fallback_models": [
+        "openai/gpt-5.4-mini"
+      ]
     },
     "metis": {
-      "model": "opencode-go/kimi-k2.5",
-      "fallback_models": ["opencode-go/glm-5.1"]
+      "model": "openai/gpt-5.4",
+      "fallback_models": [
+        "openai/gpt-5.4-mini"
+      ]
     },
     "momus": {
-      "model": "opencode-go/kimi-k2.5",
-      "fallback_models": ["opencode-go/glm-5.1"]
+      "model": "openai/gpt-5.4",
+      "fallback_models": [
+        "openai/gpt-5.4-mini"
+      ]
     },
     "atlas": {
-      "model": "opencode-go/kimi-k2.5",
-      "fallback_models": ["opencode-go/minimax-m2.7"]
+      "model": "openai/gpt-5.4",
+      "fallback_models": [
+        "openai/gpt-5.4-mini"
+      ]
     },
     "hephaestus": {
-      "model": "opencode-go/glm-5.1"
+      "model": "openai/gpt-5.4",
+      "fallback_models": [
+        "openai/gpt-5.4",
+        "openai/gpt-5.4-mini"
+      ]
     },
     "sisyphus-junior": {
-      "model": "opencode-go/minimax-m2.7",
-      "fallback_models": ["opencode-go/kimi-k2.5"]
+      "model": "openai/gpt-5.4-mini",
+      "fallback_models": [
+        "openai/gpt-5.4"
+      ]
     }
   },
   "categories": {
     "visual-engineering": {
-      "model": "opencode-go/kimi-k2.5",
-      "fallback_models": ["opencode-go/glm-5.1"]
+      "model": "openai/gpt-5.4",
+      "fallback_models": [
+        "openai/gpt-5.4-mini"
+      ]
     },
     "ultrabrain": {
-      "model": "opencode-go/kimi-k2.5",
-      "fallback_models": ["opencode-go/glm-5.1"]
+      "model": "openai/gpt-5.4",
+      "fallback_models": [
+        "openai/gpt-5.4-mini"
+      ]
     },
     "deep": {
-      "model": "opencode-go/kimi-k2.5",
-      "fallback_models": ["opencode-go/glm-5.1"]
+      "model": "openai/gpt-5.4",
+      "fallback_models": [
+        "openai/gpt-5.4",
+        "openai/gpt-5.4-mini"
+      ]
     },
     "quick": {
-      "model": "opencode-go/minimax-m2.7",
-      "fallback_models": ["opencode-go/mimo-v2-pro"]
+      "model": "openai/gpt-5.4-mini",
+      "fallback_models": [
+        "openai/gpt-5.4"
+      ]
     },
     "unspecified-low": {
-      "model": "opencode-go/minimax-m2.7",
-      "fallback_models": ["opencode-go/mimo-v2-pro"]
+      "model": "openai/gpt-5.4-mini",
+      "fallback_models": [
+        "openai/gpt-5.4"
+      ]
     },
     "unspecified-high": {
-      "model": "opencode-go/kimi-k2.5",
-      "fallback_models": ["opencode-go/glm-5.1"]
+      "model": "openai/gpt-5.4",
+      "fallback_models": [
+        "openai/gpt-5.4-mini"
+      ]
     },
     "writing": {
-      "model": "opencode-go/kimi-k2.5",
-      "fallback_models": ["opencode-go/glm-5.1"]
+      "model": "openai/gpt-5.4",
+      "fallback_models": [
+        "openai/gpt-5.4-mini"
+      ]
     },
     "artistry": {
-      "model": "opencode-go/kimi-k2.5",
-      "fallback_models": ["opencode-go/glm-5.1"]
+      "model": "openai/gpt-5.4",
+      "fallback_models": [
+        "openai/gpt-5.4-mini"
+      ]
     }
   }
 }
