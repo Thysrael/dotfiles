@@ -9,6 +9,8 @@
     "session_interrupt": "escape",
     "session_timeline": "<leader>g",
     "session_compact": "<leader>c",
-    "display_thinking": "ctrl+o"
+    "display_thinking": "ctrl+o",
+    "messages_half_page_up": "ctrl+u",
+    "messages_half_page_down": "ctrl+d"
   }
 }
