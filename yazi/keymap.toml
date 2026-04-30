@@ -49,3 +49,7 @@ on   = "b"
 run  = "plugin zoxide"
 desc = "use zoxide to open history directory"
 
+[[mgr.prepend_keymap]]
+on = "!"
+run = 'shell "$SHELL" --block'
+desc = "Open shell here"
