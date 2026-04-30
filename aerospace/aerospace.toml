@@ -190,7 +190,7 @@ on-mode-changed = []
     f12 = '''exec-and-forget bash -c '
 current=$(aerospace list-workspaces --focused)
 if [ "$current" = "T" ]; then
-    aerospace workspace M
+    aerospace workspace-back-and-forth
 elif pgrep -x kitty > /dev/null 2>&1; then
     aerospace workspace T
 else
@@ -240,7 +240,7 @@ fi
     f9 = '''exec-and-forget bash -c '
 current=$(aerospace list-workspaces --focused)
 if [ "$current" = "C" ]; then
-    aerospace workspace M
+    aerospace workspace-back-and-forth
 elif pgrep -x "Cherry Studio" > /dev/null 2>&1; then
     aerospace workspace C
 else
@@ -255,7 +255,7 @@ fi
     f10 = '''exec-and-forget bash -c '
 current=$(aerospace list-workspaces --focused)
 if [ "$current" = "W" ]; then
-    aerospace workspace M
+    aerospace workspace-back-and-forth
 elif pgrep -x WeChat > /dev/null 2>&1; then
     aerospace workspace W
 else
@@ -270,7 +270,7 @@ fi
     f8 = '''exec-and-forget bash -c '
 current=$(aerospace list-workspaces --focused)
 if [ "$current" = "N" ]; then
-    aerospace workspace M
+    aerospace workspace-back-and-forth
 elif pgrep -x Obsidian > /dev/null 2>&1; then
     aerospace workspace N
 else
@@ -285,7 +285,7 @@ fi
     f7 = '''exec-and-forget bash -c '
 current=$(aerospace list-workspaces --focused)
 if [ "$current" = "Z" ]; then
-    aerospace workspace M
+    aerospace workspace-back-and-forth
 elif pgrep -x zotero > /dev/null 2>&1; then
     aerospace workspace Z
 else
@@ -300,7 +300,7 @@ fi
     f11 = '''exec-and-forget bash -c '
 current=$(aerospace list-workspaces --focused)
 if [ "$current" = "B" ]; then
-    aerospace workspace M
+    aerospace workspace-back-and-forth
 elif pgrep -x "Google Chrome" > /dev/null 2>&1; then
     aerospace workspace B
 else
