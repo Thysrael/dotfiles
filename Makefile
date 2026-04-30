@@ -2,6 +2,8 @@
 .PHONY: gitconf zsh vim custom conda tmux font kitty rime-linux rime-mac karabiner yazi hammerspoon clang-format aerospace opencode npm
 .PHONY: clean-gitconfig clean-zsh clean-vim clean-tmux clean-font clean-kitty clean-karabiner clean-yazi clean-hammerspoon clean-clang-format clean-aerospace clean-opencode clean-npm
 
+RIME_FROST_SUBMODULE = $(PWD)/rime/rime-frost
+
 export XDG_DATA_HOME = $(HOME)/.local/share
 export XDG_CONFIG_HOME = $(HOME)/.config
 export XDG_CACHE_HOME = $(HOME)/.cache
@@ -79,27 +81,72 @@ clean-kitty:
 
 rime-linux:
 	@if [ -d $(XDG_DATA_HOME)/fcitx5/rime ]; then \
+		git -C $(PWD) submodule update --init --recursive rime/rime-frost; \
+		for src in $(RIME_FROST_SUBMODULE)/*; do \
+			name=$$(basename "$$src"); \
+			case "$$name" in \
+				build|sync|custom_phrase.txt|installation.yaml|user.yaml|*.userdb|*.custom.yaml) continue ;; \
+			esac; \
+			target="$(XDG_DATA_HOME)/fcitx5/rime/$$name"; \
+			rm -rf "$$target"; \
+			ln -sfn "$$src" "$$target"; \
+		done; \
 		ln -sfn $(PWD)/rime/default.custom.yaml $(XDG_DATA_HOME)/fcitx5/rime/; \
+		ln -sfn $(PWD)/rime/rime_frost.custom.yaml $(XDG_DATA_HOME)/fcitx5/rime/; \
+		ln -sfn $(PWD)/rime/custom_phrase.txt $(XDG_DATA_HOME)/fcitx5/rime/; \
 	else \
-		echo "You havn't install rime-ice"; \
+		echo "You havn't install Rime"; \
 	fi
 
 clean-rime-linux:
-	rm $(XDG_DATA_HOME)/fcitx5/rime/default.custom.yaml
+	rm -f $(XDG_DATA_HOME)/fcitx5/rime/default.custom.yaml
+	rm -f $(XDG_DATA_HOME)/fcitx5/rime/rime_frost.custom.yaml
+	rm -f $(XDG_DATA_HOME)/fcitx5/rime/custom_phrase.txt
+	@for src in $(RIME_FROST_SUBMODULE)/*; do \
+		name=$$(basename "$$src"); \
+		case "$$name" in \
+			build|sync|custom_phrase.txt|installation.yaml|user.yaml|*.userdb|*.custom.yaml) continue ;; \
+		esac; \
+		target="$(XDG_DATA_HOME)/fcitx5/rime/$$name"; \
+		if [ -L "$$target" ]; then rm "$$target"; fi; \
+	done
 
 rime-mac:
 	@if [ -d $(HOME)/Library/Rime ]; then \
+		git -C $(PWD) submodule update --init --recursive rime/rime-frost; \
+		for src in $(RIME_FROST_SUBMODULE)/*; do \
+			name=$$(basename "$$src"); \
+			case "$$name" in \
+				build|sync|custom_phrase.txt|installation.yaml|user.yaml|*.userdb|*.custom.yaml) continue ;; \
+			esac; \
+			target="$(HOME)/Library/Rime/$$name"; \
+			rm -rf "$$target"; \
+			ln -sfn "$$src" "$$target"; \
+		done; \
 		ln -sfn $(PWD)/rime/default.custom.yaml $(HOME)/Library/Rime/; \
 		ln -sfn $(PWD)/rime/squirrel.custom.yaml $(HOME)/Library/Rime/; \
-		ln -sfn $(PWD)/rime/rime_ice.custom.yaml $(HOME)/Library/Rime/; \
+		ln -sfn $(PWD)/rime/rime_frost.custom.yaml $(HOME)/Library/Rime/; \
+		ln -sfn $(PWD)/rime/custom_phrase.txt $(HOME)/Library/Rime/; \
+		if [ -x "/Library/Input Methods/Squirrel.app/Contents/MacOS/rime_deployer" ]; then \
+			"/Library/Input Methods/Squirrel.app/Contents/MacOS/rime_deployer" --build $(HOME)/Library/Rime "/Library/Input Methods/Squirrel.app/Contents/SharedSupport" $(HOME)/Library/Rime/build; \
+		fi; \
 	else \
-		echo "You havn't install rime-ice"; \
+		echo "You havn't install Rime"; \
 	fi
 
 clean-rime-mac:
-	rm $(HOME)/Library/Rime/default.custom.yaml
-	rm $(HOME)/Library/Rime/squirrel.custom.yaml
-	rm $(HOME)/Library/Rime/rime_ice.custom.yaml
+	rm -f $(HOME)/Library/Rime/default.custom.yaml
+	rm -f $(HOME)/Library/Rime/squirrel.custom.yaml
+	rm -f $(HOME)/Library/Rime/rime_frost.custom.yaml
+	rm -f $(HOME)/Library/Rime/custom_phrase.txt
+	@for src in $(RIME_FROST_SUBMODULE)/*; do \
+		name=$$(basename "$$src"); \
+		case "$$name" in \
+			build|sync|custom_phrase.txt|installation.yaml|user.yaml|*.userdb|*.custom.yaml) continue ;; \
+		esac; \
+		target="$(HOME)/Library/Rime/$$name"; \
+		if [ -L "$$target" ]; then rm "$$target"; fi; \
+	done
 
 karabiner:
 	ln -sfn $(PWD)/karabiner $(XDG_CONFIG_HOME)/

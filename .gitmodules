@@ -10,3 +10,6 @@
 [submodule "tmux/catppuccin"]
 	path = tmux/catppuccin
 	url = https://github.com/catppuccin/tmux.git
+[submodule "rime/rime-frost"]
+	path = rime/rime-frost
+	url = https://github.com/gaboolic/rime-frost.git

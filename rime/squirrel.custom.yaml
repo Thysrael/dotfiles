@@ -4,10 +4,10 @@ patch:
       ascii_mode: true
       vim_mode: true
     com.microsoft.VSCode:
-      assii_mode: true
+      ascii_mode: true
       vim_mode: true
     dev.zed.Zed:
-      assii_mode: true
+      ascii_mode: true
       vim_mode: true
 
   style:
@@ -15,7 +15,7 @@ patch:
     color_scheme: purity_of_form_custom
     color_scheme_dark: purity_of_form_custom
     candidate_list_layout: linear
-    candidate_format: '[label]. [candidate] [comment]'
+    candidate_format: '[label]. [candidate]'
 
   preset_color_schemes:
     # 对 purity_of_form 略微调整颜色，让色彩更柔和点，补全其他选项和注释

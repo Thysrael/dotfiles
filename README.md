@@ -23,7 +23,7 @@ This project leverages **GNU Make** and Unix **symbolic links** for configuratio
 Clone the repository to your desired location:
 
 ```shell
-git clone --recursive https://github.com/Thysrael/dotfiles.git
+git clone --depth 1 --recursive --shallow-submodules https://github.com/Thysrael/dotfiles.git
 cd dotfiles
 ```
 
