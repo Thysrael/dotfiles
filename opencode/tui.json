@@ -8,6 +8,7 @@
     "leader": "ctrl+x",
     "session_interrupt": "escape",
     "session_timeline": "<leader>g",
-    "session_compact": "<leader>c"
+    "session_compact": "<leader>c",
+    "display_thinking": "ctrl+o"
   }
 }
