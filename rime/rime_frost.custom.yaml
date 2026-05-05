@@ -1,3 +1,6 @@
 patch:
     switches/@0/reset: 1
     switches/@0/states: [ 中, A ]
+    translator/enable_encoder: true
+    translator/encode_commit_history: true
+    translator/max_phrase_length: 4
