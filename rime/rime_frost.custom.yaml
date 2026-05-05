@@ -4,3 +4,4 @@ patch:
     translator/enable_encoder: true
     translator/encode_commit_history: true
     translator/max_phrase_length: 4
+    engine/filters/@5:
