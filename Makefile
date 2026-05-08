@@ -85,11 +85,24 @@ rime-linux:
 		for src in $(RIME_FROST_SUBMODULE)/*; do \
 			name=$$(basename "$$src"); \
 			case "$$name" in \
-				build|sync|custom_phrase.txt|installation.yaml|user.yaml|*.userdb|*.custom.yaml) continue ;; \
+				build|sync|lua|custom_phrase.txt|installation.yaml|user.yaml|*.userdb|*.custom.yaml) continue ;; \
 			esac; \
 			target="$(XDG_DATA_HOME)/fcitx5/rime/$$name"; \
 			rm -rf "$$target"; \
 			ln -sfn "$$src" "$$target"; \
+		done; \
+		lua_target="$(XDG_DATA_HOME)/fcitx5/rime/lua"; \
+		if [ -L "$$lua_target" ]; then rm "$$lua_target"; fi; \
+		mkdir -p "$$lua_target"; \
+		for src in $(RIME_FROST_SUBMODULE)/lua/*; do \
+			name=$$(basename "$$src"); \
+			rm -rf "$$lua_target/$$name"; \
+			ln -sfn "$$src" "$$lua_target/$$name"; \
+		done; \
+		for src in $(PWD)/rime/lua/*; do \
+			name=$$(basename "$$src"); \
+			rm -rf "$$lua_target/$$name"; \
+			ln -sfn "$$src" "$$lua_target/$$name"; \
 		done; \
 		ln -sfn $(PWD)/rime/default.custom.yaml $(XDG_DATA_HOME)/fcitx5/rime/; \
 		ln -sfn $(PWD)/rime/rime_frost.custom.yaml $(XDG_DATA_HOME)/fcitx5/rime/; \
@@ -105,9 +118,14 @@ clean-rime-linux:
 	@for src in $(RIME_FROST_SUBMODULE)/*; do \
 		name=$$(basename "$$src"); \
 		case "$$name" in \
-			build|sync|custom_phrase.txt|installation.yaml|user.yaml|*.userdb|*.custom.yaml) continue ;; \
+			build|sync|lua|custom_phrase.txt|installation.yaml|user.yaml|*.userdb|*.custom.yaml) continue ;; \
 		esac; \
 		target="$(XDG_DATA_HOME)/fcitx5/rime/$$name"; \
+		if [ -L "$$target" ]; then rm "$$target"; fi; \
+	done
+	@for src in $(RIME_FROST_SUBMODULE)/lua/* $(PWD)/rime/lua/*; do \
+		name=$$(basename "$$src"); \
+		target="$(XDG_DATA_HOME)/fcitx5/rime/lua/$$name"; \
 		if [ -L "$$target" ]; then rm "$$target"; fi; \
 	done
 
@@ -117,11 +135,24 @@ rime-mac:
 		for src in $(RIME_FROST_SUBMODULE)/*; do \
 			name=$$(basename "$$src"); \
 			case "$$name" in \
-				build|sync|custom_phrase.txt|installation.yaml|user.yaml|*.userdb|*.custom.yaml) continue ;; \
+				build|sync|lua|custom_phrase.txt|installation.yaml|user.yaml|*.userdb|*.custom.yaml) continue ;; \
 			esac; \
 			target="$(HOME)/Library/Rime/$$name"; \
 			rm -rf "$$target"; \
 			ln -sfn "$$src" "$$target"; \
+		done; \
+		lua_target="$(HOME)/Library/Rime/lua"; \
+		if [ -L "$$lua_target" ]; then rm "$$lua_target"; fi; \
+		mkdir -p "$$lua_target"; \
+		for src in $(RIME_FROST_SUBMODULE)/lua/*; do \
+			name=$$(basename "$$src"); \
+			rm -rf "$$lua_target/$$name"; \
+			ln -sfn "$$src" "$$lua_target/$$name"; \
+		done; \
+		for src in $(PWD)/rime/lua/*; do \
+			name=$$(basename "$$src"); \
+			rm -rf "$$lua_target/$$name"; \
+			ln -sfn "$$src" "$$lua_target/$$name"; \
 		done; \
 		ln -sfn $(PWD)/rime/default.custom.yaml $(HOME)/Library/Rime/; \
 		ln -sfn $(PWD)/rime/squirrel.custom.yaml $(HOME)/Library/Rime/; \
@@ -142,9 +173,14 @@ clean-rime-mac:
 	@for src in $(RIME_FROST_SUBMODULE)/*; do \
 		name=$$(basename "$$src"); \
 		case "$$name" in \
-			build|sync|custom_phrase.txt|installation.yaml|user.yaml|*.userdb|*.custom.yaml) continue ;; \
+			build|sync|lua|custom_phrase.txt|installation.yaml|user.yaml|*.userdb|*.custom.yaml) continue ;; \
 		esac; \
 		target="$(HOME)/Library/Rime/$$name"; \
+		if [ -L "$$target" ]; then rm "$$target"; fi; \
+	done
+	@for src in $(RIME_FROST_SUBMODULE)/lua/* $(PWD)/rime/lua/*; do \
+		name=$$(basename "$$src"); \
+		target="$(HOME)/Library/Rime/lua/$$name"; \
 		if [ -L "$$target" ]; then rm "$$target"; fi; \
 	done
 
