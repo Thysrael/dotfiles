@@ -60,6 +60,20 @@
                         ]
                     },
                     {
+                        "description": "Use right option for both Eudic tap and Aerospace chords",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "right_option",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "key_code": "left_option" }],
+                                "to_if_alone": [{ "key_code": "right_option" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "ESC key sends alt-m (aerospace handles the workspace toggle)",
                         "manipulators": [
                             {
@@ -70,6 +84,43 @@
                                     {
                                         "key_code": "m",
                                         "modifiers": ["left_option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Map command-j/k to ctrl-tab navigation",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "j",
+                                    "modifiers": {
+                                        "mandatory": ["command"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "tab",
+                                        "modifiers": ["left_control"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "k",
+                                    "modifiers": {
+                                        "mandatory": ["command"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "tab",
+                                        "modifiers": ["left_control", "left_shift"]
                                     }
                                 ],
                                 "type": "basic"
