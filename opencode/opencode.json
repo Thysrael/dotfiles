@@ -34,8 +34,7 @@
     }
   },
   "plugin": [
-    "@tarquinen/opencode-dcp@latest",
-    "opencode-supermemory@latest"
+    "@tarquinen/opencode-dcp@latest"
   ],
   "mcp": {
     "context7": {
