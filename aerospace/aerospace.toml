@@ -296,15 +296,15 @@ fi
 '
 '''
 
-    # Toggle Chrome: if on B go back, else launch/switch to B
+    # Toggle Safari: if on B go back, else launch/switch to B
     f11 = '''exec-and-forget bash -c '
 current=$(aerospace list-workspaces --focused)
 if [ "$current" = "B" ]; then
     aerospace workspace-back-and-forth
-elif pgrep -x "Google Chrome" > /dev/null 2>&1; then
+elif pgrep -x "Safari" > /dev/null 2>&1; then
     aerospace workspace B
 else
-    open -a "Google Chrome"
+    open -a "Safari"
     sleep 0.8
     aerospace workspace B
 fi
@@ -367,6 +367,10 @@ run = 'layout floating'
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'Google Chrome'
+run = 'move-node-to-workspace B'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'Safari'
 run = 'move-node-to-workspace B'
 
 [[on-window-detected]]
