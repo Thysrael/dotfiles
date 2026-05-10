@@ -1,11 +1,11 @@
 patch:
     switches/@0/reset: 1
     switches/@0/states: [ 中, A ]
-    switches/@8/name: inline_english
+    switches/@8/name: inline_ascii_mode
     switches/@8/reset: 0
     switches/@8/states: [ 中, A ]
     engine/processors:
-        - lua_processor@*inline_english
+        - lua_processor@*inline_ascii
         - lua_processor@*select_character
         - ascii_composer
         - recognizer

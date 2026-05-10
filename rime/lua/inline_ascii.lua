@@ -4,10 +4,16 @@ local function is_space(key)
     return key:repr() == "space"
 end
 
+local function is_uppercase_letter(key)
+    local repr = key:repr()
+    return repr:match("^[A-Z]$") ~= nil
+        or repr:match("^Shift%+[A-Za-z]$") ~= nil
+end
+
 local function reset(env)
-    env.inline_english = false
+    env.inline_ascii = false
     env.last_key_was_space = false
-    env.engine.context:set_option("inline_english", false)
+    env.engine.context:set_option("inline_ascii_mode", false)
 end
 
 function M.init(env)
@@ -22,11 +28,11 @@ function M.func(key, env)
     local engine = env.engine
     local context = engine.context
 
-    if env.inline_english and not context:get_option("ascii_mode") then
+    if env.inline_ascii and not context:get_option("ascii_mode") then
         reset(env)
     end
 
-    if env.inline_english then
+    if env.inline_ascii then
         if is_space(key) then
             if env.last_key_was_space then
                 -- The second consecutive space is an exit gesture, not text input.
@@ -44,6 +50,19 @@ function M.func(key, env)
     end
 
     if
+        is_uppercase_letter(key)
+        and not context:get_option("ascii_mode")
+        and not context:is_composing()
+        and not context:has_menu()
+    then
+        context:set_option("ascii_mode", true)
+        context:set_option("inline_ascii_mode", true)
+        env.inline_ascii = true
+        env.last_key_was_space = false
+        return 2
+    end
+
+    if
         is_space(key)
         and not context:get_option("ascii_mode")
         and not context:is_composing()
@@ -51,8 +70,8 @@ function M.func(key, env)
     then
         engine:commit_text(" ")
         context:set_option("ascii_mode", true)
-        context:set_option("inline_english", true)
-        env.inline_english = true
+        context:set_option("inline_ascii_mode", true)
+        env.inline_ascii = true
         env.last_key_was_space = true
         return 1
     end
