@@ -36,7 +36,8 @@
   "plugin": [
     "@tarquinen/opencode-dcp@latest",
     "opencode-pty",
-    "oh-my-opencode-slim"
+    "oh-my-opencode-slim",
+    "@mohak34/opencode-notifier@latest"
   ],
   "mcp": {
     "context7": {

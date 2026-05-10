@@ -1,0 +1,10 @@
+{
+  "sound": false,
+  "minDuration": 10,
+  "events": {
+    "subagent_complete": false,
+    "session_started": false,
+    "user_message": false,
+    "client_connected": false
+  }
+}

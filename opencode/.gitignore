@@ -5,3 +5,4 @@ bun.lock
 *.backup-*
 *.bak.*
 *.bak
+opencode-notifier-state.json
