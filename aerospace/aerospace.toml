@@ -257,6 +257,7 @@ current=$(aerospace list-workspaces --focused)
 if [ "$current" = "W" ]; then
     aerospace workspace-back-and-forth
 elif pgrep -x WeChat > /dev/null 2>&1; then
+    open -a WeChat
     aerospace workspace W
 else
     open -a WeChat
