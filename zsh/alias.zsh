@@ -22,6 +22,12 @@ if [ $? -eq 0 ]; then
         rm -f -- "$tmp"
     }
 fi
+command -v kitty >/dev/null 2>&1
+if [ $? -eq 0 ]; then
+    function ssh() {
+        kitty +kitten ssh "$@"
+    }
+fi
 # mb: start blink
 # md: start blod
 # me: turn off bold, blink and underline
