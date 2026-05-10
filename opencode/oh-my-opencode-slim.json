@@ -14,7 +14,7 @@
         ]
       },
       "oracle": {
-        "model": "openai/gpt-5.4",
+        "model": "openai/gpt-5.5",
         "variant": "medium",
         "skills": [
           "simplify"
@@ -34,7 +34,9 @@
         "mcps": [
           "websearch",
           "context7",
-          "grep_app"
+          "grep_app",
+          "exa",
+          "gh_grep"
         ]
       },
       "explorer": {
