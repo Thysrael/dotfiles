@@ -84,15 +84,20 @@
                         ]
                     },
                     {
-                        "description": "Use right option for both Eudic tap and Aerospace chords",
+                        "description": "Use left option for both Eudic tap and Aerospace chords",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "right_option",
+                                    "key_code": "left_option",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "to": [{ "key_code": "left_option" }],
-                                "to_if_alone": [{ "key_code": "right_option" }],
+                                "to": [
+                                    {
+                                        "key_code": "left_option",
+                                        "lazy": true
+                                    }
+                                ],
+                                "to_if_alone": [{ "key_code": "left_option" }],
                                 "type": "basic"
                             }
                         ]
