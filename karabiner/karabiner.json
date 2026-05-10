@@ -46,6 +46,30 @@
                         ]
                     },
                     {
+                        "description": "Restore Ctrl-B to backward char in Zotero",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^org\\.zotero\\.zotero$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "b",
+                                    "modifiers": {
+                                        "mandatory": ["control"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "key_code": "left_arrow" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Change caps_lock to control if pressed with other keys, to escape if pressed alone.",
                         "manipulators": [
                             {
