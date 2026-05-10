@@ -108,7 +108,7 @@
                         ]
                     },
                     {
-                        "description": "ESC key sends alt-m (aerospace handles the workspace toggle)",
+                        "description": "ESC key sends delayed alt-m (aerospace handles the workspace toggle)",
                         "manipulators": [
                             {
                                 "from": {
@@ -117,7 +117,8 @@
                                 "to": [
                                     {
                                         "key_code": "m",
-                                        "modifiers": ["right_option"]
+                                        "modifiers": ["right_option"],
+                                        "hold_down_milliseconds": 150
                                     }
                                 ],
                                 "type": "basic"
