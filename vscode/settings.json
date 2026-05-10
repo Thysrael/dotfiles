@@ -38,17 +38,11 @@
             "font-family": "'Sarasa Term SC Nerd' !important",
             "font-size": "13px !important"
         },
-        // ".monaco-workbench .tabs-container .tab *": {
-        //     "font-family": "Sarasa Term SC Nerd !important",
-        // },
-        // ".monaco-icon-label>.monaco-icon-label-container>.monaco-icon-name-container>.label-name": {
-        //     "font-family": "Sarasa Term SC Nerd !important",
-        // },
         ".statusbar-item-label[aria-label^=\"-- NORMAL\"]": {
             "background-color": "#90b4fa !important",
             "color": "#181825 !important",
             "font-family": "Maple Mono NF CN !important",
-            "font-weight": "bold !important",
+            "font-weight": "bold !important"
         },
         ".statusbar-item-label[aria-label^=\"-- INSERT\"]": {
             "background-color": "#a6e3a1 !important",
@@ -56,7 +50,7 @@
             "font-family": "Maple Mono NF CN !important",
             "font-weight": "bold !important"
         },
-        ".statusbar-item-label[aria-label^=\"-- REPLACE\"], .statusbar-item-label[aria-label=\"-- SURROUND INPUT --\"], .statusbar-item-label[aria-label=\"-- EASYMOTION INPUT --\"], .statusbar-item-label[aria-label^='Already']": {
+        ".statusbar-item-label:is([aria-label^=\"-- REPLACE\"], [aria-label=\"-- SURROUND INPUT --\"], [aria-label=\"-- EASYMOTION INPUT --\"], [aria-label^='Already'])": {
             "background-color": "#f38ba8 !important",
             "color": "#181825 !important",
             "font-family": "Maple Mono NF CN !important",
@@ -68,13 +62,13 @@
             "font-family": "Maple Mono NF CN !important",
             "font-weight": "bold !important"
         },
-        ".statusbar-item-label[aria-label^=':'], .statusbar-item-label[aria-label^='/'], .statusbar-item-label[aria-label^='?'], .statusbar-item-label[aria-label^='match']": {
+        ".statusbar-item-label:is([aria-label^=':'], [aria-label^='/'], [aria-label^='?'], [aria-label^='match'])": {
             "background-color": "#f9e2af !important",
             "color": "#181825 !important",
             "font-family": "Maple Mono NF CN !important",
             "font-weight": "bold !important"
         },
-        ".statusbar-item-label[aria-label^='E4'], .statusbar-item-label[aria-label^='E3']": {
+        ".statusbar-item-label:is([aria-label^='E4'], [aria-label^='E3'])": {
             "background-color": "#c72e0f !important",
             "color": "#fff !important",
             "font-family": "Maple Mono NF CN !important",
@@ -188,17 +182,9 @@
                 "U"
             ],
             "after": [
-                "<c-r>",
+                "<c-r>"
             ]
         },
-        // {
-        //     "before": [
-        //         "<C-v>"
-        //     ],
-        //     "after": [
-        //         "<C-q>",
-        //     ]
-        // },
         {
             "before": [
                 ","
@@ -278,7 +264,7 @@
                 "p"
             ],
             "commands": [
-                "workbench.action.quickOpen",
+                "workbench.action.quickOpen"
             ],
             "silent": true
         },
@@ -288,7 +274,7 @@
                 "v"
             ],
             "commands": [
-                "workbench.view.scm",
+                "workbench.view.scm"
             ],
             "silent": true
         },
@@ -298,7 +284,7 @@
                 "i"
             ],
             "commands": [
-                "workbench.action.gotoSymbol",
+                "workbench.action.gotoSymbol"
             ],
             "when": "!accessibilityHelpIsShown && !accessibleViewIsShown",
             "silent": true
@@ -309,7 +295,7 @@
                 "b"
             ],
             "commands": [
-                "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup",
+                "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup"
             ],
             "silent": true
         },
@@ -319,7 +305,7 @@
                 "s"
             ],
             "commands": [
-                "workbench.action.findInFiles",
+                "workbench.action.findInFiles"
             ],
             "silent": true
         },
@@ -329,7 +315,7 @@
                 "o"
             ],
             "commands": [
-                "workbench.action.focusPreviousGroup",
+                "workbench.action.focusPreviousGroup"
             ],
             "silent": true
         },
@@ -339,8 +325,8 @@
                 "3"
             ],
             "commands": [
-                "workbench.action.splitEditor",
-            ],
+                "workbench.action.splitEditor"
+            ]
         },
         {
             "before": [
@@ -348,8 +334,8 @@
                 "1"
             ],
             "commands": [
-                "workbench.action.closeEditorsInOtherGroups",
-            ],
+                "workbench.action.closeEditorsInOtherGroups"
+            ]
         },
         {
             "before": [
@@ -357,8 +343,8 @@
                 "0"
             ],
             "commands": [
-                "workbench.action.closeEditorsAndGroup",
-            ],
+                "workbench.action.closeEditorsAndGroup"
+            ]
         },
         {
             "before": [
@@ -366,8 +352,8 @@
                 "w"
             ],
             "commands": [
-                "workbench.action.files.save",
-            ],
+                "workbench.action.files.save"
+            ]
         },
         {
             "before": [
@@ -375,8 +361,8 @@
                 "g"
             ],
             "commands": [
-                "editor.action.dirtydiff.next",
-            ],
+                "editor.action.dirtydiff.next"
+            ]
         },
         {
             "before": [
@@ -384,8 +370,8 @@
                 "G"
             ],
             "commands": [
-                "editor.action.dirtydiff.before",
-            ],
+                "editor.action.dirtydiff.before"
+            ]
         },
         {
             "before": [
@@ -393,8 +379,8 @@
                 "e"
             ],
             "commands": [
-                "workbench.view.explorer",
-            ],
+                "workbench.view.explorer"
+            ]
         },
         {
             "before": [
@@ -402,9 +388,9 @@
                 "d"
             ],
             "commands": [
-                "workbench.action.focusAuxiliaryBar",
-            ],
-        },
+                "workbench.action.focusAuxiliaryBar"
+            ]
+        }
     ],
     "vim.operatorPendingModeKeyBindingsNonRecursive": [
         {
@@ -449,12 +435,12 @@
                 "<leader>",
                 "b"
             ]
-        },
+        }
     ],
     "vim.visualModeKeyBindingsNonRecursive": [
         {
             "before": [
-                "p",
+                "p"
             ],
             "after": [
                 "p",
@@ -481,18 +467,18 @@
         },
         {
             "before": [
-                "v",
+                "v"
             ],
             "commands": [
-                "editor.action.smartSelect.expand",
+                "editor.action.smartSelect.expand"
             ]
         },
         {
             "before": [
-                "V",
+                "V"
             ],
             "commands": [
-                "editor.action.smartSelect.shrink",
+                "editor.action.smartSelect.shrink"
             ]
         },
         {
@@ -503,12 +489,15 @@
             "commands": [
                 "editor.action.formatSelection"
             ]
-        },
+        }
     ],
     "workbench.editor.showTabs": "none",
     "editor.lineNumbers": "relative",
     "latex-workshop.latex.autoBuild.run": "never",
     "chat.commandCenter.enabled": false,
+    "json.schemaDownload.trustedDomains": {
+        "https://opencode.ai/": true
+    },
     "[jsonc]": {
         "editor.defaultFormatter": "vscode.json-language-features"
     },
