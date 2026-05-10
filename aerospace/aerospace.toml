@@ -236,20 +236,20 @@ fi
 '
 '''
 
-    # Toggle CherryStudio: if on A go back, else launch/switch to A
-    f9 = '''exec-and-forget bash -c '
-current=$(aerospace list-workspaces --focused)
-if [ "$current" = "C" ]; then
-    aerospace workspace-back-and-forth
-elif pgrep -x "Cherry Studio" > /dev/null 2>&1; then
-    aerospace workspace C
-else
-    open -a "Cherry Studio"
-    sleep 0.8
-    aerospace workspace C
-fi
-'
-'''
+#     # Toggle CherryStudio: if on A go back, else launch/switch to A
+#     f9 = '''exec-and-forget bash -c '
+# current=$(aerospace list-workspaces --focused)
+# if [ "$current" = "C" ]; then
+#     aerospace workspace-back-and-forth
+# elif pgrep -x "Cherry Studio" > /dev/null 2>&1; then
+#     aerospace workspace C
+# else
+#     open -a "Cherry Studio"
+#     sleep 0.8
+#     aerospace workspace C
+# fi
+# '
+# '''
 
     # Toggle WeChat: if on W go back, else launch/switch to W
     f10 = '''exec-and-forget bash -c '
@@ -282,7 +282,7 @@ fi
 '''
 
     # Toggle Zotero: if on Z go back, else launch/switch to Z
-    f7 = '''exec-and-forget bash -c '
+    f9 = '''exec-and-forget bash -c '
 current=$(aerospace list-workspaces --focused)
 if [ "$current" = "Z" ]; then
     aerospace workspace-back-and-forth
