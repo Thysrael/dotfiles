@@ -1,0 +1,549 @@
+{
+    "editor.fontSize": 13,
+    "editor.fontFamily": "Jetbrains Mono Nerd, Menlo, Monaco, 'Courier New', monospace",
+    "terminal.integrated.fontFamily": "Maple Mono NF CN",
+    "terminal.integrated.fontSize": 13,
+    "terminal.integrated.enableVisualBell": false,
+    "accessibility.signals.terminalBell": {
+        "sound": "off",
+        "announcement": "off"
+    },
+    "editor.cursorSmoothCaretAnimation": "on",
+    "editor.minimap.enabled": false,
+    "files.trimTrailingWhitespace": true,
+    "files.trimFinalNewlines": true,
+    "editor.trimWhitespaceOnDelete": true,
+    "editor.glyphMargin": false,
+    "accessibility.signals.lineHasError": {
+        "sound": "off",
+        "announcement": "off"
+    },
+    "accessibility.signals.lineHasWarning": {
+        "sound": "off",
+        "announcement": "off"
+    },
+    "accessibility.signals.positionHasError": {
+        "sound": "off",
+        "announcement": "off"
+    },
+    "accessibility.signals.positionHasWarning": {
+        "sound": "off",
+        "announcement": "off"
+    },
+    "markdown.preview.breaks": true,
+    "workbench.secondarySideBar.defaultVisibility": "hidden",
+    "explorer.confirmDragAndDrop": false,
+    "custom-ui-style.stylesheet": {
+        ".split-view-view > .sidebar > .content > .viewlet": {
+            "font-family": "'Sarasa Term SC Nerd' !important",
+            "font-size": "13px !important"
+        },
+        // ".monaco-workbench .tabs-container .tab *": {
+        //     "font-family": "Sarasa Term SC Nerd !important",
+        // },
+        // ".monaco-icon-label>.monaco-icon-label-container>.monaco-icon-name-container>.label-name": {
+        //     "font-family": "Sarasa Term SC Nerd !important",
+        // },
+        ".statusbar-item-label[aria-label^=\"-- NORMAL\"]": {
+            "background-color": "#90b4fa !important",
+            "color": "#181825 !important",
+            "font-family": "Maple Mono NF CN !important",
+            "font-weight": "bold !important",
+        },
+        ".statusbar-item-label[aria-label^=\"-- INSERT\"]": {
+            "background-color": "#a6e3a1 !important",
+            "color": "#181825 !important",
+            "font-family": "Maple Mono NF CN !important",
+            "font-weight": "bold !important"
+        },
+        ".statusbar-item-label[aria-label^=\"-- REPLACE\"], .statusbar-item-label[aria-label=\"-- SURROUND INPUT --\"], .statusbar-item-label[aria-label=\"-- EASYMOTION INPUT --\"], .statusbar-item-label[aria-label^='Already']": {
+            "background-color": "#f38ba8 !important",
+            "color": "#181825 !important",
+            "font-family": "Maple Mono NF CN !important",
+            "font-weight": "bold !important"
+        },
+        ".statusbar-item-label[aria-label^=\"-- VISUAL\"]": {
+            "background-color": "#cba6f7 !important",
+            "color": "#181825 !important",
+            "font-family": "Maple Mono NF CN !important",
+            "font-weight": "bold !important"
+        },
+        ".statusbar-item-label[aria-label^=':'], .statusbar-item-label[aria-label^='/'], .statusbar-item-label[aria-label^='?'], .statusbar-item-label[aria-label^='match']": {
+            "background-color": "#f9e2af !important",
+            "color": "#181825 !important",
+            "font-family": "Maple Mono NF CN !important",
+            "font-weight": "bold !important"
+        },
+        ".statusbar-item-label[aria-label^='E4'], .statusbar-item-label[aria-label^='E3']": {
+            "background-color": "#c72e0f !important",
+            "color": "#fff !important",
+            "font-family": "Maple Mono NF CN !important",
+            "font-weight": "bold !important"
+        }
+    },
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": false,
+    "vim.visualstar": true,
+    "vim.highlightedyank.enable": true,
+    "vim.highlightedyank.color": "#f9e2af",
+    "vim.hlsearch": true,
+    "vim.leader": "<space>",
+    "vim.camelCaseMotion.enable": true,
+    "vim.easymotion": true,
+    "vim.smartRelativeLine": true,
+    "vim.foldfix": true,
+    "vim.replaceWithRegister": true,
+    "extensions.experimental.affinity": {
+        "vscodevim.vim": 1,
+        "asvetliakov.vscode-neovim": 1
+    },
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "esc"
+            ],
+            "after": [
+                ":",
+                "n",
+                "o",
+                "h",
+                "l",
+                "<CR>"
+            ]
+        },
+        {
+            "before": [
+                "L"
+            ],
+            "after": [
+                "$"
+            ]
+        },
+        {
+            "before": [
+                "H"
+            ],
+            "after": [
+                "^"
+            ]
+        },
+        {
+            "before": [
+                "J"
+            ],
+            "after": [
+                "5",
+                "j"
+            ]
+        },
+        {
+            "before": [
+                "K"
+            ],
+            "after": [
+                "5",
+                "k"
+            ]
+        },
+        {
+            "before": [
+                ";"
+            ],
+            "commands": [
+                "editor.toggleFold"
+            ]
+        },
+        {
+            "before": [
+                "."
+            ],
+            "after": [
+                "g",
+                "d"
+            ]
+        },
+        {
+            "before": [
+                "r"
+            ],
+            "after": [
+                "g",
+                "h"
+            ]
+        },
+        {
+            "before": [
+                "R"
+            ],
+            "after": [
+                ":",
+                "r",
+                "e",
+                "g",
+                "<CR>"
+            ]
+        },
+        {
+            "before": [
+                "U"
+            ],
+            "after": [
+                "<c-r>",
+            ]
+        },
+        // {
+        //     "before": [
+        //         "<C-v>"
+        //     ],
+        //     "after": [
+        //         "<C-q>",
+        //     ]
+        // },
+        {
+            "before": [
+                ","
+            ],
+            "commands": [
+                "workbench.action.navigateBack"
+            ],
+            "when": "canNavigateBack"
+        },
+        {
+            "before": [
+                "<leader>",
+                "f"
+            ],
+            "commands": [
+                "editor.action.formatDocument"
+            ]
+        },
+        {
+            "before": [
+                "<Enter>"
+            ],
+            "commands": [
+                "editor.action.insertLineAfter"
+            ]
+        },
+        {
+            "before": [
+                "w"
+            ],
+            "after": [
+                "<leader>",
+                "w"
+            ]
+        },
+        {
+            "before": [
+                "e"
+            ],
+            "after": [
+                "<leader>",
+                "e"
+            ]
+        },
+        {
+            "before": [
+                "b"
+            ],
+            "after": [
+                "<leader>",
+                "b"
+            ]
+        },
+        {
+            "before": [
+                "s"
+            ],
+            "after": [
+                "<leader>",
+                "<leader>",
+                "s"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "<space>"
+            ],
+            "commands": [
+                "workbench.action.showCommands"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "<leader>",
+                "p"
+            ],
+            "commands": [
+                "workbench.action.quickOpen",
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "<leader>",
+                "v"
+            ],
+            "commands": [
+                "workbench.view.scm",
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "<leader>",
+                "i"
+            ],
+            "commands": [
+                "workbench.action.gotoSymbol",
+            ],
+            "when": "!accessibilityHelpIsShown && !accessibleViewIsShown",
+            "silent": true
+        },
+        {
+            "before": [
+                "<leader>",
+                "b"
+            ],
+            "commands": [
+                "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup",
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "<leader>",
+                "s"
+            ],
+            "commands": [
+                "workbench.action.findInFiles",
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "<leader>",
+                "o"
+            ],
+            "commands": [
+                "workbench.action.focusPreviousGroup",
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "<leader>",
+                "3"
+            ],
+            "commands": [
+                "workbench.action.splitEditor",
+            ],
+        },
+        {
+            "before": [
+                "<leader>",
+                "1"
+            ],
+            "commands": [
+                "workbench.action.closeEditorsInOtherGroups",
+            ],
+        },
+        {
+            "before": [
+                "<leader>",
+                "0"
+            ],
+            "commands": [
+                "workbench.action.closeEditorsAndGroup",
+            ],
+        },
+        {
+            "before": [
+                "<leader>",
+                "w"
+            ],
+            "commands": [
+                "workbench.action.files.save",
+            ],
+        },
+        {
+            "before": [
+                "<leader>",
+                "g"
+            ],
+            "commands": [
+                "editor.action.dirtydiff.next",
+            ],
+        },
+        {
+            "before": [
+                "<leader>",
+                "G"
+            ],
+            "commands": [
+                "editor.action.dirtydiff.before",
+            ],
+        },
+        {
+            "before": [
+                "<leader>",
+                "e"
+            ],
+            "commands": [
+                "workbench.view.explorer",
+            ],
+        },
+        {
+            "before": [
+                "<leader>",
+                "d"
+            ],
+            "commands": [
+                "workbench.action.focusAuxiliaryBar",
+            ],
+        },
+    ],
+    "vim.operatorPendingModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "L"
+            ],
+            "after": [
+                "$"
+            ]
+        },
+        {
+            "before": [
+                "H"
+            ],
+            "after": [
+                "^"
+            ]
+        },
+        {
+            "before": [
+                "w"
+            ],
+            "after": [
+                "<leader>",
+                "w"
+            ]
+        },
+        {
+            "before": [
+                "e"
+            ],
+            "after": [
+                "<leader>",
+                "e"
+            ]
+        },
+        {
+            "before": [
+                "b"
+            ],
+            "after": [
+                "<leader>",
+                "b"
+            ]
+        },
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "p",
+            ],
+            "after": [
+                "p",
+                "g",
+                "v",
+                "y"
+            ]
+        },
+        {
+            "before": [
+                "L"
+            ],
+            "after": [
+                "$"
+            ]
+        },
+        {
+            "before": [
+                "H"
+            ],
+            "after": [
+                "^"
+            ]
+        },
+        {
+            "before": [
+                "v",
+            ],
+            "commands": [
+                "editor.action.smartSelect.expand",
+            ]
+        },
+        {
+            "before": [
+                "V",
+            ],
+            "commands": [
+                "editor.action.smartSelect.shrink",
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "f"
+            ],
+            "commands": [
+                "editor.action.formatSelection"
+            ]
+        },
+    ],
+    "workbench.editor.showTabs": "none",
+    "editor.lineNumbers": "relative",
+    "latex-workshop.latex.autoBuild.run": "never",
+    "chat.commandCenter.enabled": false,
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "editor.defaultColorDecorators": "never",
+    "[latex]": {
+        "editor.wordWrap": "on"
+    },
+    "editor.scrollbar.horizontal": "hidden",
+    "workbench.iconTheme": "material-icon-theme",
+    "[python]": {
+        "diffEditor.ignoreTrimWhitespace": false
+    },
+    "workbench.colorTheme": "Kanagawa",
+    "git.confirmSync": false,
+    "git.blame.editorDecoration.enabled": false,
+    "editor.stickyScroll.enabled": false,
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "notebook.markup.fontSize": 14,
+    "notebook.markup.fontFamily": "Maple Mono NF CN",
+    "jupyter.askForKernelRestart": false,
+    "errorLens.enabled": false,
+    "errorLens.enabledDiagnosticLevels": [
+        "error",
+        "warning",
+        "info",
+        "hint"
+    ],
+    "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: LLVM, IndentWidth: 4, TabWidth: 4, ColumnLimit: 90}",
+    "cmake.showConfigureWithDebuggerNotification": false,
+    "terminal.integrated.suggest.enabled": false,
+    "chat.viewSessions.enabled": false,
+    "terminal.integrated.initialHint": false,
+    "claudeCode.preferredLocation": "panel",
+    "explorer.confirmPasteNative": false,
+    "editor.accessibilitySupport": "off",
+    "accessibility.signalOptions.volume": 0,
+    "terminal.integrated.gpuAcceleration": "on"
+}
