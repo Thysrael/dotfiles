@@ -1,10 +1,13 @@
 {
-  "$schema": "https://unpkg.com/oh-my-opencode-slim@latest/oh-my-opencode-slim.schema.json",
   "preset": "openai",
   "presets": {
     "openai": {
       "orchestrator": {
-        "model": "openai/gpt-5.4",
+        "model": [
+          "openai/gpt-5.4",
+          "github-copilot/gpt-5.2-codex",
+          "github-copilot/gpt-5.2"
+        ],
         "skills": [
           "*"
         ],
@@ -14,7 +17,10 @@
         ]
       },
       "oracle": {
-        "model": "openai/gpt-5.4",
+        "model": [
+          "openai/gpt-5.4",
+          "github-copilot/gpt-5.2"
+        ],
         "variant": "medium",
         "skills": [
           "simplify"
@@ -22,37 +28,48 @@
         "mcps": []
       },
       "council": {
-        "model": "openai/gpt-5.4",
+        "model": [
+          "openai/gpt-5.4",
+          "github-copilot/gpt-5.2"
+        ],
         "variant": "medium",
         "skills": [],
         "mcps": []
       },
       "librarian": {
-        "model": "openai/gpt-5.4-mini",
-        "variant": "low",
+        "model": [
+          "github-copilot/gemini-3-flash-preview",
+          "openai/gpt-5.4-mini"
+        ],
+        "variant": "medium",
         "skills": [],
         "mcps": [
-          "websearch",
-          "context7",
-          "grep_app",
-          "exa",
-          "gh_grep"
+          "*"
         ]
       },
       "explorer": {
-        "model": "openai/gpt-5.4-mini",
-        "variant": "low",
+        "model": [
+          "github-copilot/gemini-3-flash-preview",
+          "openai/gpt-5.4-mini"
+        ],
+        "variant": "medium",
         "skills": [],
         "mcps": []
       },
       "designer": {
-        "model": "openai/gpt-5.4-mini",
+        "model": [
+          "github-copilot/gemini-3-flash-preview",
+          "openai/gpt-5.4-mini"
+        ],
         "variant": "medium",
         "skills": [],
         "mcps": []
       },
       "fixer": {
-        "model": "openai/gpt-5.4-mini",
+        "model": [
+          "github-copilot/gemini-3-flash-preview",
+          "openai/gpt-5.4-mini"
+        ],
         "variant": "medium",
         "skills": [],
         "mcps": []
