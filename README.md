@@ -57,6 +57,8 @@ To configure a specific tool (e.g., `tmux`):
 make tmux
 ```
 
+For OpenCode, `make opencode` also installs the pinned plugin dependencies from the tracked lockfile in `opencode/package-lock.json`.
+
 To roll back changes (remove symlinks):
 
 ```shell

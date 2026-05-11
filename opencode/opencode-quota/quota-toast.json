@@ -1,0 +1,13 @@
+{
+    "enabledProviders": "auto",
+    "anthropicBinaryPath": "__disable_claude__",
+    "enableToast": false,
+    "tuiSidebarPanel": {
+        "enabled": true
+    },
+    "tuiCompactStatus": {
+        "enabled": true,
+        "homeBottom": true,
+        "sessionPrompt": true
+    }
+}

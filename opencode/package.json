@@ -1,0 +1,13 @@
+{
+  "name": "opencode",
+  "private": true,
+  "dependencies": {
+    "@mohak34/opencode-notifier": "0.2.5",
+    "@opencode-ai/plugin": "1.14.46",
+    "@slkiser/opencode-quota": "3.7.1",
+    "@tarquinen/opencode-dcp": "3.1.11",
+    "oh-my-opencode-slim": "1.0.7",
+    "opencode-pty": "0.3.4",
+    "zod": "4.4.3"
+  }
+}

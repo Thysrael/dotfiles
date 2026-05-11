@@ -34,10 +34,11 @@
     }
   },
   "plugin": [
-    "@tarquinen/opencode-dcp@latest",
+    "@tarquinen/opencode-dcp",
     "opencode-pty",
     "oh-my-opencode-slim",
-    "@mohak34/opencode-notifier@latest"
+    "@mohak34/opencode-notifier",
+    "@slkiser/opencode-quota"
   ],
   "mcp": {
     "context7": {

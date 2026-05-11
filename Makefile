@@ -223,6 +223,7 @@ clean-aerospace:
 
 opencode:
 	ln -sfn $(PWD)/opencode $(XDG_CONFIG_HOME)/
+	npm ci --prefix $(PWD)/opencode
 
 clean-opencode:
 	rm $(XDG_CONFIG_HOME)/opencode
