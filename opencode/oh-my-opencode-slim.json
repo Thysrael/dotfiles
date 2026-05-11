@@ -12,8 +12,7 @@
           "*"
         ],
         "mcps": [
-          "*",
-          "!context7"
+          "*"
         ]
       },
       "oracle": {
@@ -25,7 +24,9 @@
         "skills": [
           "simplify"
         ],
-        "mcps": []
+        "mcps": [
+          "*"
+        ]
       },
       "council": {
         "model": [
@@ -53,7 +54,9 @@
           "openai/gpt-5.4-mini"
         ],
         "variant": "medium",
-        "skills": [],
+        "skills": [
+          "*"
+        ],
         "mcps": []
       },
       "designer": {
@@ -71,8 +74,12 @@
           "openai/gpt-5.4-mini"
         ],
         "variant": "medium",
-        "skills": [],
-        "mcps": []
+        "skills": [
+          "*"
+        ],
+        "mcps": [
+          "*"
+        ]
       }
     },
     "opencode-go": {
