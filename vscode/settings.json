@@ -13,6 +13,7 @@
     "files.trimTrailingWhitespace": true,
     "files.trimFinalNewlines": true,
     "editor.trimWhitespaceOnDelete": true,
+    "latex-workshop.formatting.latex": "latexindent",
     "editor.glyphMargin": false,
     "accessibility.signals.lineHasError": {
         "sound": "off",

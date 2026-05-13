@@ -1,6 +1,7 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "model": "openai/gpt-5.4",
+  "small_model": "github-copilot/gemini-3-flash-preview",
   "permission": {
     "bash": {
       "*": "allow",
@@ -31,12 +32,12 @@
       "git cherry-pick *": "ask",
       "git rebase *": "ask",
       "git merge *": "ask"
-    }
+    },
+    "external_directory": "allow",
   },
   "plugin": [
     "@tarquinen/opencode-dcp",
     "opencode-pty",
-    "oh-my-opencode-slim",
     "@mohak34/opencode-notifier",
     "@slkiser/opencode-quota"
   ],
@@ -52,6 +53,15 @@
       "type": "remote",
       "url": "https://mcp.grep.app"
     },
+    "ast_grep": {
+      "type": "local",
+      "command": [
+        "uvx",
+        "--from",
+        "git+https://github.com/ast-grep/ast-grep-mcp",
+        "ast-grep-server"
+      ]
+    },
     "exa": {
       "type": "remote",
       "url": "https://mcp.exa.ai/mcp",
@@ -59,12 +69,35 @@
     }
   },
   "agent": {
-    "explore": {
-      "disable": true
-    },
-    "general": {
-      "disable": true
+    "cheap": {
+      "description": "Cheap helper for lightweight drafting, web summarization, term lookup, and initial codebase exploration",
+      "mode": "subagent",
+      "model": "github-copilot/gemini-3-flash-preview",
+      "prompt": "You are a low-cost helper for lightweight tasks only. Good tasks: drafting docs, rewriting text, explaining terms, summarizing web pages, extracting facts, and initial codebase exploration. Prefer concise outputs. Do not make architectural decisions. Do not perform risky or broad code changes. If the task needs deeper judgment, uncertain technical conclusions, or non-trivial implementation, say so briefly and hand it back.",
+      "permission": {
+        "read": "allow",
+        "glob": "allow",
+        "grep": "allow",
+        "lsp": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "bash": "allow",
+        "edit": {
+          "*.md": "allow",
+          "*.mdx": "allow",
+          "*": "deny"
+        },
+        "external_directory": "deny",
+        "task": "allow",
+        "skill": "allow"
+      }
     }
   },
-  "lsp": true
+  "lsp": true,
+  "formatter": true,
+  "compaction": {
+    "auto": true,
+    "prune": true,
+    "reserved": 20000
+  }
 }
