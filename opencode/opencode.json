@@ -43,8 +43,8 @@
   ],
   "command": {
     "paper-review": {
-      "description": "Review a systems research paper with an interactive accept/reject/revise workflow",
-      "template": "Use the paper-review skill. Review a systems research paper in phases. First ask for the target venue, style guide or template if any, main .tex file, and whether image-content checking is needed. If any of these are already provided in the user's command, do not ask again. Then inspect the paper and produce findings grouped by severity using the paper-review output format. Do not edit the paper yet. Present findings one at a time or in small batches and ask the user to choose for each finding: accept the suggested fix, skip it, or provide their own revision instruction. Track the user's decisions. After all findings are reviewed, summarize the accepted and custom changes, ask for final confirmation, then apply only those approved changes to the manuscript. Keep edits minimal and low-side-effect. Do not invent venue rules, numerical results, citations, or image details. User arguments: $ARGUMENTS"
+      "description": "Review a systems paper with batched accept/skip/revise edits",
+      "template": "Use the paper-review skill. Review by issue type across the paper, not by section. For each small batch, number findings, explain issues in Chinese, ask which numbers to accept, treat unlisted numbers as skipped unless custom instructions are given, and immediately apply accepted/custom edits before continuing. Keep edits minimal and evidence-backed. User arguments: $ARGUMENTS"
     }
   },
   "mcp": {

@@ -2,6 +2,7 @@
   "name": "opencode",
   "private": true,
   "dependencies": {
+    "@devcxl/opencode-worktree": "0.1.2",
     "@mohak34/opencode-notifier": "0.2.5",
     "@opencode-ai/plugin": "1.14.46",
     "@slkiser/opencode-quota": "3.7.1",
