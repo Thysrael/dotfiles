@@ -75,6 +75,26 @@
     }
   },
   "agent": {
+    "ask": {
+      "description": "Read-only primary agent for questions, explanations, and codebase investigation without write permissions",
+      "mode": "primary",
+      "model": "openai/gpt-5.4",
+      "prompt": "You are a read-only Q&A agent. Use this agent for asking questions, explanations, codebase reading, documentation lookup, and codebase investigation. You may run only read-only inspection commands allowed by permissions. Do not edit files, create files, install dependencies, make commits, or perform side-effecting actions. If the user asks for changes, explain that this agent is read-only and suggest switching to a writing-capable agent.",
+      "permission": {
+        "read": "allow",
+        "glob": "allow",
+        "grep": "allow",
+        "lsp": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "edit": "deny",
+        "bash": "allow",
+        "zsh": "allow",
+        "external_directory": "allow",
+        "task": "deny",
+        "skill": "allow"
+      }
+    },
     "cheap": {
       "description": "Cheap helper for lightweight drafting, web summarization, term lookup, and initial codebase exploration",
       "mode": "subagent",
@@ -88,11 +108,7 @@
         "webfetch": "allow",
         "websearch": "allow",
         "bash": "allow",
-        "edit": {
-          "*.md": "allow",
-          "*.mdx": "allow",
-          "*": "deny"
-        },
+        "edit": "allow",
         "external_directory": "deny",
         "task": "allow",
         "skill": "allow"
