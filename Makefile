@@ -19,7 +19,7 @@ mac: pc rime-mac karabiner aerospace
 
 linux: pc rime-linux font
 
-pc: server kitty yazi vscode
+pc: server kitty yazi vscode opencode
 
 server: pre gitconf zsh vim tmux clang-format npm custom
 
