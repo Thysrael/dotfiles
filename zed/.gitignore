@@ -1,0 +1,14 @@
+# Ignore everything by default. Only source configuration should be tracked.
+*
+
+!.gitignore
+!settings.json
+!keymap.json
+!tasks.json
+
+!snippets/
+!snippets/**
+
+!themes/
+!themes/*.json
+!themes/*.jsonc

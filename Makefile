@@ -1,6 +1,6 @@
 .PHONY: mac linux pc server
-.PHONY: gitconf zsh vim custom conda tmux font kitty rime-linux rime-mac karabiner yazi hammerspoon clang-format aerospace opencode npm vscode
-.PHONY: clean-gitconfig clean-zsh clean-vim clean-tmux clean-font clean-kitty clean-karabiner clean-yazi clean-hammerspoon clean-clang-format clean-aerospace clean-opencode clean-npm clean-vscode
+.PHONY: gitconf zsh vim custom conda tmux font kitty rime-linux rime-mac karabiner yazi hammerspoon clang-format aerospace opencode npm vscode zed
+.PHONY: clean-gitconfig clean-zsh clean-vim clean-tmux clean-font clean-kitty clean-karabiner clean-yazi clean-hammerspoon clean-clang-format clean-aerospace clean-opencode clean-npm clean-vscode clean-zed
 
 RIME_FROST_SUBMODULE = $(PWD)/rime/rime-frost
 UNAME_S := $(shell uname -s)
@@ -10,12 +10,14 @@ else
 VSCODE_USER_DIR = $(XDG_CONFIG_HOME)/Code/User
 endif
 
+ZED_CONFIG_DIR = $(XDG_CONFIG_HOME)/zed
+
 export XDG_DATA_HOME = $(HOME)/.local/share
 export XDG_CONFIG_HOME = $(HOME)/.config
 export XDG_CACHE_HOME = $(HOME)/.cache
 export XDG_STATE_HOME = $(HOME)/.local/state
 
-mac: pc rime-mac karabiner aerospace
+mac: pc rime-mac karabiner aerospace zed
 
 linux: pc rime-linux font
 
@@ -248,3 +250,13 @@ vscode:
 clean-vscode:
 	rm -f "$(VSCODE_USER_DIR)/settings.json"
 	rm -f "$(VSCODE_USER_DIR)/keybindings.json"
+
+zed:
+	@if [ -e "$(ZED_CONFIG_DIR)" ] && [ ! -L "$(ZED_CONFIG_DIR)" ]; then \
+		echo "Skip: $(ZED_CONFIG_DIR) already exists and is not a symlink"; \
+	else \
+		ln -sfn "$(PWD)/zed" "$(ZED_CONFIG_DIR)"; \
+	fi
+
+clean-zed:
+	@if [ -L "$(ZED_CONFIG_DIR)" ]; then rm "$(ZED_CONFIG_DIR)"; fi

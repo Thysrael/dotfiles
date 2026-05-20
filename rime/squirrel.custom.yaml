@@ -8,6 +8,7 @@ patch:
       vim_mode: true
     dev.zed.Zed:
       ascii_mode: true
+      vim_mode: true
 
   style:
     # 选择皮肤，亮色与暗色主题

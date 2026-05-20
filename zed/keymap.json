@@ -1,0 +1,96 @@
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-t": "terminal_panel::Toggle",
+      "ctrl-r": ["projects::OpenRecent", { "create_new_window": false }]
+    }
+  },
+  {
+    "context": "AcpThread > Editor",
+    "bindings": {
+      "ctrl-e": ["editor::MoveToEndOfLine", { "stop_at_soft_wraps": false }]
+    }
+  },
+  {
+    "context": "Editor",
+    "unbind": {
+      "ctrl-t": "editor::Transpose"
+    }
+  },
+  {
+    "context": "vim_mode == literal",
+    "unbind": {
+      "ctrl-t": [
+        "vim::Literal",
+        [
+          "ctrl-t",
+          "\u0014"
+        ]
+      ]
+    }
+  },
+  {
+    "context": "vim_mode == insert",
+    "unbind": {
+      "ctrl-t": "vim::Indent"
+    }
+  },
+  {
+    "context": "VimControl && !menu",
+    "unbind": {
+      "ctrl-t": "pane::GoToOlderTag"
+    }
+  },
+  {
+    "context": "vim_mode == literal",
+    "unbind": {
+      "ctrl-r": [
+        "vim::Literal",
+        [
+          "ctrl-r",
+          "\u0012"
+        ]
+      ]
+    }
+  },
+  {
+    "context": "vim_mode == insert",
+    "unbind": {
+      "ctrl-r": "vim::PushRegister"
+    }
+  },
+  {
+    "context": "vim_mode == normal",
+    "unbind": {
+      "ctrl-r": "vim::Redo"
+    }
+  },
+  {
+    "context": "(vim_mode == helix_normal || vim_mode == helix_select) && !menu",
+    "unbind": {
+      "ctrl-r": "vim::Redo"
+    }
+  },
+  {
+    "context": "vim_mode == normal && !menu",
+    "bindings": {
+      "space g": "git_panel::ToggleFocus",
+      "space e": "project_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "GitPanel",
+    "bindings": {
+      "space g": "workspace::CloseActiveDock",
+      "space e": "project_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "ProjectPanel",
+    "bindings": {
+      "space g": "git_panel::ToggleFocus",
+      "space e": "workspace::CloseActiveDock"
+    }
+  }
+]
