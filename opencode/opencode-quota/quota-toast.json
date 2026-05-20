@@ -1,5 +1,5 @@
 {
-    "enabledProviders": "auto",
+    "enabledProviders": ["copilot"],
     "anthropicBinaryPath": "__disable_claude__",
     "enableToast": false,
     "tuiSidebarPanel": {
