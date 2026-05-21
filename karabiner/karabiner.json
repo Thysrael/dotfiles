@@ -213,30 +213,6 @@
                         ]
                     },
                     {
-                        "description": "Use left option for both Eudic tap and Aerospace chords",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "left_option",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "left_option",
-                                        "lazy": true
-                                    }
-                                ],
-                                "to_if_alone": [{ "key_code": "left_option" }],
-                                "to_if_held_down": [{ "key_code": "left_option" }],
-                                "parameters": {
-                                    "basic.to_if_alone_timeout_milliseconds": 150,
-                                    "basic.to_if_held_down_threshold_milliseconds": 150
-                                },
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "ESC key sends delayed alt-m (aerospace handles the workspace toggle)",
                         "manipulators": [
                             {
