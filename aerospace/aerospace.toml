@@ -110,11 +110,23 @@ on-mode-changed = []
     alt-slash = 'layout tiles horizontal vertical'
     alt-comma = 'layout accordion horizontal vertical'
 
-    # See: https://nikitabobko.github.io/AeroSpace/commands#focus
-    alt-h = 'focus left'
+    # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
+    alt-h = '''exec-and-forget bash -c '
+active=$({ aerospace list-windows --all --format "%{workspace}"; aerospace list-workspaces --focused; } | sort -u)
+for ws in M N Z W B T; do
+    printf "%s\n" "$active" | grep -qx "$ws" && printf "%s\n" "$ws"
+done | aerospace workspace --wrap-around --stdin prev
+'
+'''
     alt-j = 'focus --boundaries-action wrap-around-the-workspace dfs-prev'
     alt-k = 'focus --boundaries-action wrap-around-the-workspace dfs-next'
-    alt-l = 'focus right'
+    alt-l = '''exec-and-forget bash -c '
+active=$({ aerospace list-windows --all --format "%{workspace}"; aerospace list-workspaces --focused; } | sort -u)
+for ws in M N Z W B T; do
+    printf "%s\n" "$active" | grep -qx "$ws" && printf "%s\n" "$ws"
+done | aerospace workspace --wrap-around --stdin next
+'
+'''
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move
     alt-shift-h = 'move left'
