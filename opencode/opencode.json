@@ -1,6 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "openai-horizon/gpt-5.4",
+  "model": "openai-horizon/gpt-5.5",
   "small_model": "github-copilot/gemini-3-flash-preview",
   "provider": {
     "openai-horizon": {
