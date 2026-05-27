@@ -1,4 +1,7 @@
 patch:
+    ascii_composer/switch_key:
+        Shift_L: noop
+        Shift_R: noop
     schema_list:
         - schema: rime_frost
     menu:
