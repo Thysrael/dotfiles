@@ -112,7 +112,7 @@ rime-linux:
 			rm -rf "$$lua_target/$$name"; \
 			ln -sfn "$$src" "$$lua_target/$$name"; \
 		done; \
-		ln -sfn $(PWD)/rime/default.custom.yaml $(XDG_DATA_HOME)/fcitx5/rime/; \
+		ln -sfn $(PWD)/rime/default.linux.custom.yaml $(XDG_DATA_HOME)/fcitx5/rime/default.custom.yaml; \
 		ln -sfn $(PWD)/rime/rime_frost.custom.yaml $(XDG_DATA_HOME)/fcitx5/rime/; \
 		ln -sfn $(PWD)/rime/custom_phrase.txt $(XDG_DATA_HOME)/fcitx5/rime/; \
 	else \
@@ -162,7 +162,7 @@ rime-mac:
 			rm -rf "$$lua_target/$$name"; \
 			ln -sfn "$$src" "$$lua_target/$$name"; \
 		done; \
-		ln -sfn $(PWD)/rime/default.custom.yaml $(HOME)/Library/Rime/; \
+		ln -sfn $(PWD)/rime/default.mac.custom.yaml $(HOME)/Library/Rime/default.custom.yaml; \
 		ln -sfn $(PWD)/rime/squirrel.custom.yaml $(HOME)/Library/Rime/; \
 		ln -sfn $(PWD)/rime/rime_frost.custom.yaml $(HOME)/Library/Rime/; \
 		ln -sfn $(PWD)/rime/custom_phrase.txt $(HOME)/Library/Rime/; \

@@ -1,13 +1,13 @@
 patch:
   app_options: # use `mdls -name kMDItemCFBundleIdentifier /Applications/Visual\ Studio\ Code.app` to get bundle name
     net.kovidgoyal.kitty:
-      ascii_mode: true
+      ascii_mode: false
       vim_mode: true
     com.microsoft.VSCode:
-      ascii_mode: true
+      ascii_mode: false
       vim_mode: true
     dev.zed.Zed:
-      ascii_mode: true
+      ascii_mode: false
       vim_mode: true
 
   style:

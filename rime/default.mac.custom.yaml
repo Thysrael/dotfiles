@@ -1,0 +1,8 @@
+patch:
+    ascii_composer/switch_key:
+        Shift_L: commit_code
+        Shift_R: noop
+    schema_list:
+        - schema: rime_frost
+    menu:
+        page_size: 8
