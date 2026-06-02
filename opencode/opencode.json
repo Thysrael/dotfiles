@@ -161,8 +161,8 @@
   "plugin": [
     "@tarquinen/opencode-dcp",
     "opencode-pty",
-    "@mohak34/opencode-notifier",
-    "@slkiser/opencode-quota"
+    "@mohak34/opencode-notifier"
+    // "@slkiser/opencode-quota"
   ],
   "command": {
     "paper-review": {
@@ -249,10 +249,5 @@
     }
   },
   "lsp": true,
-  "formatter": true,
-  "compaction": {
-    "auto": true,
-    "prune": true,
-    "reserved": 20000
-  }
+  "formatter": false
 }
