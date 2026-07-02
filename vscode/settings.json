@@ -83,6 +83,10 @@
     "vim.highlightedyank.color": "#f9e2af",
     "vim.hlsearch": true,
     "vim.leader": "<space>",
+    "vim.autoSwitchInputMethod.enable": true,
+    "vim.autoSwitchInputMethod.defaultIM": "com.apple.keylayout.ABC",
+    "vim.autoSwitchInputMethod.obtainIMCmd": "/opt/homebrew/bin/macism",
+    "vim.autoSwitchInputMethod.switchIMCmd": "/opt/homebrew/bin/macism {im}",
     "vim.camelCaseMotion.enable": true,
     "vim.easymotion": true,
     "vim.smartRelativeLine": true,
@@ -535,5 +539,6 @@
     "explorer.confirmPasteNative": false,
     "editor.accessibilitySupport": "off",
     "accessibility.signalOptions.volume": 0,
-    "terminal.integrated.gpuAcceleration": "on"
+    "terminal.integrated.gpuAcceleration": "on",
+    "python.analysis.typeCheckingMode": "standard"
 }

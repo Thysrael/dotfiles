@@ -1,4 +1,6 @@
 patch:
+  show_notifications_when: never
+
   app_options: # use `mdls -name kMDItemCFBundleIdentifier /Applications/Visual\ Studio\ Code.app` to get bundle name
     net.kovidgoyal.kitty:
       ascii_mode: false
@@ -9,6 +11,8 @@ patch:
     dev.zed.Zed:
       ascii_mode: false
       vim_mode: true
+    org.gnu.Emacs:
+      ascii_mode: false
 
   style:
     # 选择皮肤，亮色与暗色主题
