@@ -1,7 +1,7 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:full-border"
-rev = "4ffa48f"
-hash = "eff8ff12fa4e5f035a10d8aeeb4c258d"
+rev = "598cdb6"
+hash = "7b625412411be411153886894d9acaf"
 
 [[plugin.deps]]
 use = "Gallardo994/clippy"
@@ -10,28 +10,28 @@ hash = "977c6f4ffceada33ced20d941f1defab"
 
 [[plugin.deps]]
 use = "KKV9/compress"
-rev = "46a6b9f"
-hash = "771af2becc575a3f43d0542de823969d"
+rev = "e60e122"
+hash = "fbaf0adc8efc59555b748d36aab62d40"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:smart-enter"
-rev = "4ffa48f"
+rev = "598cdb6"
 hash = "187cc58ba7ac3befd49c342129e6f1b6"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:piper"
-rev = "4ffa48f"
-hash = "384464b6df8cb807425c521f8cd790f3"
+rev = "598cdb6"
+hash = "d99cfbc3812e7738505f9e4bedb759cd"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:chmod"
-rev = "4ffa48f"
+rev = "598cdb6"
 hash = "f0c8c378184d5f8abd1b095a443d336d"
 
 [[plugin.deps]]
 use = "boydaihungst/mediainfo"
-rev = "49f5ab7"
-hash = "6e3b5e58f985cc2d625e0030dc35b1b2"
+rev = "4f80288"
+hash = "40e0a6a769045ada6aafafd33c27f3de"
 
 [[flavor.deps]]
 use = "dangooddd/kanagawa"
