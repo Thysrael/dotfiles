@@ -401,6 +401,7 @@ run = 'layout floating'
 
 # Catch-all: all other apps go to M (Main)
 [[on-window-detected]]
+if = 'true'
 run = 'move-node-to-workspace M'
 
 # Misc: use 'System -> Desktop & Dock -> Mission Control -> Group Windows by Application' to workaround with the mini icon
