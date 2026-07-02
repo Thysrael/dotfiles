@@ -196,7 +196,7 @@ karabiner:
 	ln -sfn $(PWD)/karabiner $(XDG_CONFIG_HOME)/
 
 clean-karabiner:
-	rm $(XDG_CONFIG_HOME)/karabiner
+	rm -r $(XDG_CONFIG_HOME)/karabiner
 
 yazi:
 	ln -sfn $(PWD)/yazi $(XDG_CONFIG_HOME)/
@@ -228,13 +228,13 @@ opencode:
 	npm ci --prefix $(PWD)/opencode
 
 clean-opencode:
-	rm $(XDG_CONFIG_HOME)/opencode
+	rm -r $(XDG_CONFIG_HOME)/opencode
 
 npm:
 	ln -sfn $(PWD)/npm $(XDG_CONFIG_HOME)/npm
 
 clean-npm:
-	rm $(XDG_CONFIG_HOME)/npm
+	rm -r $(XDG_CONFIG_HOME)/npm
 
 vscode:
 	mkdir -p "$(VSCODE_USER_DIR)"
