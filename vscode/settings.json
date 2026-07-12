@@ -540,5 +540,6 @@
     "editor.accessibilitySupport": "off",
     "accessibility.signalOptions.volume": 0,
     "terminal.integrated.gpuAcceleration": "on",
-    "python.analysis.typeCheckingMode": "standard"
+    "python.analysis.typeCheckingMode": "standard",
+    "diffEditor.ignoreTrimWhitespace": false
 }
