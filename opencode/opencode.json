@@ -204,20 +204,13 @@
       "git rebase *": "ask",
       "git merge *": "ask"
     },
-    "external_directory": "allow"
+    "external_directory": "allow",
+    "webfetch": "allow"
   },
   "plugin": [
-    "@tarquinen/opencode-dcp",
     "opencode-pty",
     "@mohak34/opencode-notifier"
-    // "@slkiser/opencode-quota"
   ],
-  "command": {
-    "paper-review": {
-      "description": "Review a systems paper with batched accept/skip/revise edits",
-      "template": "Use the paper-review skill. Review by issue type across the paper, not by section. For each small batch, number findings, explain issues in Chinese, ask which numbers to accept, treat unlisted numbers as skipped unless custom instructions are given, and immediately apply accepted/custom edits before continuing. Keep edits minimal and evidence-backed. User arguments: $ARGUMENTS"
-    }
-  },
   "mcp": {
     "context7": {
       "type": "remote",
