@@ -46,24 +46,50 @@
                         ]
                     },
                     {
-                        "description": "Tap shift alone to fn",
+                        "description": "Tap shift alone to switch Emacs input method",
                         "manipulators": [
                             {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^org\\.gnu\\.Emacs$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "left_shift",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "to": [{ "key_code": "left_shift" }],
-                                "to_if_alone": [{ "key_code": "fn" }],
+                                "to": [
+                                    {
+                                        "key_code": "left_shift",
+                                        "lazy": true
+                                    }
+                                ],
+                                "to_if_alone": [{ "key_code": "f18" }],
                                 "type": "basic"
                             },
                             {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^org\\.gnu\\.Emacs$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "right_shift",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "to": [{ "key_code": "right_shift" }],
-                                "to_if_alone": [{ "key_code": "fn" }],
+                                "to": [
+                                    {
+                                        "key_code": "right_shift",
+                                        "lazy": true
+                                    }
+                                ],
+                                "to_if_alone": [{ "key_code": "f18" }],
                                 "type": "basic"
                             }
                         ]

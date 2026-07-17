@@ -1,7 +1,9 @@
 patch:
-  show_notifications_when: never
+  show_notifications_when: appropriate
 
   app_options: # use `mdls -name kMDItemCFBundleIdentifier /Applications/Visual\ Studio\ Code.app` to get bundle name
+    com.raycast.macos:
+      ascii_mode: true
     net.kovidgoyal.kitty:
       ascii_mode: false
     com.microsoft.VSCode:
@@ -9,7 +11,7 @@ patch:
     dev.zed.Zed:
       ascii_mode: false
     org.gnu.Emacs:
-      ascii_mode: false
+      ascii_mode: true
 
   style:
     # 选择皮肤，亮色与暗色主题
