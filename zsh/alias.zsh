@@ -25,7 +25,11 @@ fi
 command -v kitty >/dev/null 2>&1
 if [ $? -eq 0 ]; then
     function ssh() {
-        kitty +kitten ssh "$@"
+        if [ -n "${KITTY_WINDOW_ID:-}" ]; then
+            kitty +kitten ssh "$@"
+        else
+            command ssh "$@"
+        fi
     }
 fi
 # mb: start blink
