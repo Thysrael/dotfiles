@@ -263,33 +263,28 @@ fi
 # '
 # '''
 
-    # Toggle WeChat: if on W go back, else launch/switch to W
-    f10 = '''exec-and-forget bash -c '
-current=$(aerospace list-workspaces --focused)
-if [ "$current" = "W" ]; then
-    aerospace workspace-back-and-forth
-elif pgrep -x WeChat > /dev/null 2>&1; then
-    open -a WeChat
-    aerospace workspace W
-else
-    open -a WeChat
-    sleep 0.8
-    aerospace workspace W
-fi
-'
-'''
-
-    # Toggle Obsidian: if on N go back, else launch/switch to N
+    # Toggle the notes and documents workspace
     f8 = '''exec-and-forget bash -c '
 current=$(aerospace list-workspaces --focused)
 if [ "$current" = "N" ]; then
     aerospace workspace-back-and-forth
-elif pgrep -x Obsidian > /dev/null 2>&1; then
-    aerospace workspace N
 else
-    open -a Obsidian
-    sleep 0.8
     aerospace workspace N
+fi
+'
+'''
+
+    # Toggle messaging workspace; launch WeChat only when W has no messaging windows
+    f10 = '''exec-and-forget bash -c '
+current=$(aerospace list-workspaces --focused)
+if [ "$current" = "W" ]; then
+    aerospace workspace-back-and-forth
+elif aerospace list-windows --workspace W --format "%{app-bundle-id}" | grep -Eq "^(com.tencent.xinWeChat|ru.keepcoder.Telegram)$"; then
+    aerospace workspace W
+else
+    open -a WeChat
+    sleep 0.8
+    aerospace workspace W
 fi
 '
 '''
@@ -366,7 +361,15 @@ if.app-name-regex-substring = 'Telegram'
 run = 'move-node-to-workspace W'
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'Obsidian'
+if.app-id = 'md.obsidian'
+run = 'move-node-to-workspace N'
+
+[[on-window-detected]]
+if.app-id = 'com.kingsoft.wpsoffice.mac.global'
+run = 'move-node-to-workspace N'
+
+[[on-window-detected]]
+if.app-id = 'com.omnigroup.OmniGraffle7'
 run = 'move-node-to-workspace N'
 
 [[on-window-detected]]
