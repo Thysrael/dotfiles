@@ -176,9 +176,9 @@
   "permission": {
     "bash": {
       "*": "allow",
-      "git add *": "deny",
-      "git commit *": "deny",
-      "git push *": "deny",
+      "git add *": "ask",
+      "git commit *": "ask",
+      "git push *": "ask",
       "git reset *": "ask",
       "git stash *": "ask",
       "git checkout *": "ask",
@@ -191,9 +191,9 @@
     },
     "zsh": {
       "*": "allow",
-      "git add *": "deny",
-      "git commit *": "deny",
-      "git push *": "deny",
+      "git add *": "ask",
+      "git commit *": "ask",
+      "git push *": "ask",
       "git reset *": "ask",
       "git stash *": "ask",
       "git checkout *": "ask",
@@ -222,15 +222,6 @@
     "gh_grep": {
       "type": "remote",
       "url": "https://mcp.grep.app"
-    },
-    "ast_grep": {
-      "type": "local",
-      "command": [
-        "uvx",
-        "--from",
-        "git+https://github.com/ast-grep/ast-grep-mcp",
-        "ast-grep-server"
-      ]
     },
     "exa": {
       "type": "remote",
