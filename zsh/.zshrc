@@ -31,6 +31,9 @@ source $ZSH/powerlevel10k/powerlevel10k.zsh-theme
 # alias
 source $ZSH/alias.zsh
 
+# terminal
+source $ZSH/terminal.zsh
+
 # fzf
 source $ZSH/fzf.zsh
 
