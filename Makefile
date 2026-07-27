@@ -1,6 +1,6 @@
 .PHONY: mac linux pc server
-.PHONY: gitconf zsh vim custom conda tmux font kitty rime-linux rime-mac karabiner yazi hammerspoon clang-format aerospace opencode npm vscode zed
-.PHONY: clean-gitconfig clean-zsh clean-vim clean-tmux clean-font clean-kitty clean-karabiner clean-yazi clean-hammerspoon clean-clang-format clean-aerospace clean-opencode clean-npm clean-vscode clean-zed
+.PHONY: gitconf zsh vim custom conda tmux font kitty rime-linux rime-mac karabiner yazi hammerspoon clang-format aerospace codex opencode npm vscode zed
+.PHONY: clean-gitconfig clean-zsh clean-vim clean-tmux clean-font clean-kitty clean-karabiner clean-yazi clean-hammerspoon clean-clang-format clean-aerospace clean-codex clean-opencode clean-npm clean-vscode clean-zed
 
 RIME_FROST_SUBMODULE = $(PWD)/rime/rime-frost
 UNAME_S := $(shell uname -s)
@@ -11,6 +11,9 @@ VSCODE_USER_DIR = $(XDG_CONFIG_HOME)/Code/User
 endif
 
 ZED_CONFIG_DIR = $(XDG_CONFIG_HOME)/zed
+CODEX_HOME = $(XDG_DATA_HOME)/codex
+CODEX_PROFILE = portable
+CODEX_PROFILE_CONFIG = $(CODEX_HOME)/$(CODEX_PROFILE).config.toml
 
 export XDG_DATA_HOME = $(HOME)/.local/share
 export XDG_CONFIG_HOME = $(HOME)/.config
@@ -21,7 +24,7 @@ mac: pc rime-mac karabiner aerospace zed
 
 linux: pc rime-linux font
 
-pc: server kitty yazi vscode opencode
+pc: server kitty yazi vscode opencode codex
 
 server: pre gitconf zsh vim tmux clang-format npm custom
 
@@ -222,6 +225,31 @@ aerospace:
 
 clean-aerospace:
 	rm $(XDG_CONFIG_HOME)/aerospace
+
+codex:
+	mkdir -p "$(CODEX_HOME)"
+	@if [ -L "$(CODEX_HOME)" ]; then \
+		echo "Error: $(CODEX_HOME) is a legacy whole-directory symlink."; \
+		exit 1; \
+	fi
+	@if [ -e "$(CODEX_PROFILE_CONFIG)" ] && [ ! -L "$(CODEX_PROFILE_CONFIG)" ]; then \
+		echo "Error: $(CODEX_PROFILE_CONFIG) exists and is not a symlink"; \
+		exit 1; \
+	fi
+	@if [ -e "$(CODEX_HOME)/rules" ] && [ ! -L "$(CODEX_HOME)/rules" ]; then \
+		echo "Error: $(CODEX_HOME)/rules exists and is not a symlink"; \
+		exit 1; \
+	fi
+	ln -sfn "$(PWD)/codex/$(CODEX_PROFILE).config.toml" "$(CODEX_PROFILE_CONFIG)"
+	ln -sfn "$(PWD)/codex/rules" "$(CODEX_HOME)/rules"
+
+clean-codex:
+	@if [ "$$(readlink "$(CODEX_PROFILE_CONFIG)" 2>/dev/null)" = "$(PWD)/codex/$(CODEX_PROFILE).config.toml" ]; then \
+		rm -f "$(CODEX_PROFILE_CONFIG)"; \
+	fi
+	@if [ "$$(readlink "$(CODEX_HOME)/rules" 2>/dev/null)" = "$(PWD)/codex/rules" ]; then \
+		rm -f "$(CODEX_HOME)/rules"; \
+	fi
 
 opencode:
 	ln -sfn $(PWD)/opencode $(XDG_CONFIG_HOME)/

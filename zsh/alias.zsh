@@ -67,3 +67,34 @@ alias tn="tmux new -s"
 # misc
 alias python="python3"
 alias wget='wget --hsts-file="$XDG_DATA_HOME/wget-hsts"'
+
+codex() {
+    local arg
+
+    for arg in "$@"; do
+        case "$arg" in
+            -p | --profile | --profile=*)
+                command codex "$@"
+                return
+                ;;
+        esac
+    done
+
+    case "${1:-}" in
+        apply | app | app-server | cloud | completion | doctor | exec-server | \
+            features | help | login | logout | mcp-server | plugin | \
+            remote-control | update | -h | --help | -V | --version)
+            command codex "$@"
+            ;;
+        debug)
+            if [[ "${2:-}" == "prompt-input" ]]; then
+                command codex --profile portable "$@"
+            else
+                command codex "$@"
+            fi
+            ;;
+        *)
+            command codex --profile portable "$@"
+            ;;
+    esac
+}

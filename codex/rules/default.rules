@@ -1,0 +1,37 @@
+prefix_rule(pattern=["uv"], decision="allow")
+prefix_rule(pattern=["node"], decision="allow")
+prefix_rule(pattern=["make"], decision="allow")
+
+prefix_rule(
+    pattern = [
+        "git",
+        [
+            "add",
+            "commit",
+            "push",
+            "reset",
+            "stash",
+            "checkout",
+            "switch",
+            "restore",
+            "clean",
+            "revert",
+            "cherry-pick",
+            "rebase",
+            "merge",
+        ],
+    ],
+    decision = "prompt",
+    justification = "Ask before changing Git state.",
+    match = [
+        "git add .",
+        "git commit -m test",
+        "git push origin main",
+        "git switch feature",
+    ],
+    not_match = [
+        "git status",
+        "git diff",
+        "git log --oneline",
+    ],
+)
