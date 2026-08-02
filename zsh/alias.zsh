@@ -67,6 +67,9 @@ alias tn="tmux new -s"
 # misc
 alias python="python3"
 alias wget='wget --hsts-file="$XDG_DATA_HOME/wget-hsts"'
+if [[ "$OSTYPE" == darwin* ]]; then
+    source $ZSH/zwc.zsh
+fi
 
 codex() {
     local arg
