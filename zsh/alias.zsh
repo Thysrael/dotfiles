@@ -25,8 +25,7 @@ fi
 command -v kitty >/dev/null 2>&1
 if [ $? -eq 0 ]; then
     function ssh() {
-        local parent_command="$(ps -p "$PPID" -o comm= 2>/dev/null)"
-        if [ -z "${SSH_CONNECTION:-}" ] && [ -n "${KITTY_WINDOW_ID:-}" ] && [ "${parent_command:t}" = "kitty" ]; then
+        if [ -z "${SSH_CONNECTION:-}" ]; then
             kitty +kitten ssh "$@"
         else
             command ssh "$@"
