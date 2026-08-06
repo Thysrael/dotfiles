@@ -1,4 +1,4 @@
-.PHONY: mac linux pc server
+.PHONY: boot-mac boot-server mac linux pc server
 .PHONY: gitconf zsh vim custom conda tmux font kitty rime-linux rime-mac karabiner yazi hammerspoon clang-format aerospace codex opencode npm vscode zed
 .PHONY: clean-gitconfig clean-zsh clean-vim clean-tmux clean-font clean-kitty clean-karabiner clean-yazi clean-hammerspoon clean-clang-format clean-aerospace clean-codex clean-opencode clean-npm clean-vscode clean-zed
 
@@ -19,6 +19,55 @@ export XDG_DATA_HOME = $(HOME)/.local/share
 export XDG_CONFIG_HOME = $(HOME)/.config
 export XDG_CACHE_HOME = $(HOME)/.cache
 export XDG_STATE_HOME = $(HOME)/.local/state
+
+boot-mac:
+	@if [ "$(UNAME_S)" != "Darwin" ]; then \
+		echo "Error: boot-mac requires macOS." >&2; \
+		exit 1; \
+	fi
+	@if ! xcode-select -p >/dev/null 2>&1; then \
+		xcode-select --install >/dev/null 2>&1 || true; \
+		echo "Install the requested Command Line Tools, then run 'make boot-mac' again." >&2; \
+		exit 1; \
+	fi
+	@if ! command -v brew >/dev/null 2>&1; then \
+		/bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"; \
+	fi
+	@BREW_BIN="$$(command -v brew 2>/dev/null || true)"; \
+	if [ -z "$$BREW_BIN" ] && [ -x /opt/homebrew/bin/brew ]; then BREW_BIN=/opt/homebrew/bin/brew; fi; \
+	if [ -z "$$BREW_BIN" ] && [ -x /usr/local/bin/brew ]; then BREW_BIN=/usr/local/bin/brew; fi; \
+	if [ -z "$$BREW_BIN" ]; then \
+		echo "Error: Homebrew installation completed but brew was not found." >&2; \
+		exit 1; \
+	fi; \
+	eval "$$($$BREW_BIN shellenv)"; \
+	brew bundle --file="$(PWD)/Brewfile"; \
+	git -C "$(PWD)" submodule update --init --recursive; \
+	mkdir -p "$(HOME)/Library/Rime"; \
+	$(MAKE) mac
+
+boot-server:
+	@if [ "$(UNAME_S)" != "Linux" ]; then \
+		echo "Error: boot-server requires Linux." >&2; \
+		exit 1; \
+	fi
+	@set -e; \
+	ARCH="$$(uname -m)"; \
+	case "$$ARCH" in \
+		x86_64|amd64) SUFFIX=amd64 ;; \
+		aarch64|arm64) SUFFIX=arm64 ;; \
+		*) echo "Error: unsupported architecture: $$ARCH" >&2; exit 1 ;; \
+	esac; \
+	FILE="toolkit-$$SUFFIX.tar.gz"; \
+	URL="https://github.com/thysrael/dotfiles/releases/latest/download/$$FILE"; \
+	DEST="$(HOME)/.local/bin"; \
+	mkdir -p "$$DEST"; \
+	curl -LfsS "$$URL" | tar -xz -C "$$DEST"; \
+	echo "Installed $$FILE to $$DEST"; \
+	"$$DEST/rg" --version; \
+	"$$DEST/lazygit" --version; \
+	"$$DEST/opencode" --version; \
+	$(MAKE) server
 
 mac: pc rime-mac karabiner aerospace zed
 

@@ -45,9 +45,11 @@ jobs:
           if [ "${{ matrix.arch }}" = "amd64" ]; then
             RUST_ARCH="x86_64"
             MATCH_STR="x86_64-unknown-linux-musl"
+            OPENCODE_ARCH="x64-baseline"
           elif [ "${{ matrix.arch }}" = "arm64" ]; then
             RUST_ARCH="aarch64"
             MATCH_STR="aarch64-unknown-linux-gnu"
+            OPENCODE_ARCH="arm64"
           fi
 
           echo "🚀 Architecture: $TARGET"
@@ -83,6 +85,10 @@ jobs:
           # 7. zoxide
           echo "⬇️ zoxide..."
           ./eget ajeetdsouza/zoxide --system $TARGET --asset "musl" --asset "tar.gz" --to $OUT/
+
+          # 8. opencode
+          echo "⬇️ opencode..."
+          curl -LfsS "https://github.com/anomalyco/opencode/releases/latest/download/opencode-linux-${OPENCODE_ARCH}-musl.tar.gz" | tar -xz -C $OUT
 
           # === ✅ Packaging ===
           echo "📦 Compressing..."

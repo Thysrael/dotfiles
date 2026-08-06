@@ -33,10 +33,12 @@ The core system depends only on:
 - [make](https://www.gnu.org/software/make/)
 
 **Optional Enhancements:**
-The following modern CLI tools are recommended for the full experience. You can install them using the provided helper script:
+The following modern CLI tools are recommended for the full experience.
+
+On a Linux server, install these tools and deploy the server configuration with:
 
 ```shell
-./toolkit.sh
+make boot-server
 ```
 
 - [Maple Nerd Font](https://github.com/subframe7536/maple-font): Or any preferred [Nerd Font](https://www.nerdfonts.com/).
@@ -44,6 +46,7 @@ The following modern CLI tools are recommended for the full experience. You can 
 - [bat](https://github.com/sharkdp/bat): A `cat` clone with syntax highlighting.
 - [zoxide](https://github.com/ajeetdsouza/zoxide): A smarter `cd` command.
 - [fzf](https://github.com/junegunn/fzf): A general-purpose command-line fuzzy finder.
+- [OpenCode](https://opencode.ai/): An AI coding agent for the terminal.
 
 ## Usage
 
@@ -74,6 +77,14 @@ make server # core tools for headless servers
 make linux  # full suite for Linux desktops
 make mac    # full suite for MacOS desktops
 ```
+
+On a new Mac, install the required Homebrew packages and then deploy the configuration with:
+
+```shell
+make boot-mac
+```
+
+If Command Line Tools are missing, the command starts Apple's installer and asks you to run it again after installation completes.
 
 > [!WARNING]
 > **Backup your data**: Deployment replaces existing configuration files with symbolic links. While `make` is generally safe, it is highly recommended to backup your original config files before running these commands.
