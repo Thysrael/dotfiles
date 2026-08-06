@@ -1,8 +1,8 @@
-.PHONY: boot-mac boot-server mac linux pc server
+.PHONY: boot-mac boot-server init-server mac linux pc server
 .PHONY: gitconf zsh vim custom conda tmux font kitty rime-linux rime-mac karabiner yazi hammerspoon clang-format aerospace codex opencode npm vscode zed
 .PHONY: clean-gitconfig clean-zsh clean-vim clean-tmux clean-font clean-kitty clean-karabiner clean-yazi clean-hammerspoon clean-clang-format clean-aerospace clean-codex clean-opencode clean-npm clean-vscode clean-zed
 
-RIME_FROST_SUBMODULE = $(PWD)/rime/rime-frost
+RIME_FROST_SUBMODULE = $(CURDIR)/rime/rime-frost
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Darwin)
 VSCODE_USER_DIR = $(HOME)/Library/Application Support/Code/User
@@ -21,53 +21,13 @@ export XDG_CACHE_HOME = $(HOME)/.cache
 export XDG_STATE_HOME = $(HOME)/.local/state
 
 boot-mac:
-	@if [ "$(UNAME_S)" != "Darwin" ]; then \
-		echo "Error: boot-mac requires macOS." >&2; \
-		exit 1; \
-	fi
-	@if ! xcode-select -p >/dev/null 2>&1; then \
-		xcode-select --install >/dev/null 2>&1 || true; \
-		echo "Install the requested Command Line Tools, then run 'make boot-mac' again." >&2; \
-		exit 1; \
-	fi
-	@if ! command -v brew >/dev/null 2>&1; then \
-		/bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"; \
-	fi
-	@BREW_BIN="$$(command -v brew 2>/dev/null || true)"; \
-	if [ -z "$$BREW_BIN" ] && [ -x /opt/homebrew/bin/brew ]; then BREW_BIN=/opt/homebrew/bin/brew; fi; \
-	if [ -z "$$BREW_BIN" ] && [ -x /usr/local/bin/brew ]; then BREW_BIN=/usr/local/bin/brew; fi; \
-	if [ -z "$$BREW_BIN" ]; then \
-		echo "Error: Homebrew installation completed but brew was not found." >&2; \
-		exit 1; \
-	fi; \
-	eval "$$($$BREW_BIN shellenv)"; \
-	brew bundle --file="$(PWD)/Brewfile"; \
-	git -C "$(PWD)" submodule update --init --recursive; \
-	mkdir -p "$(HOME)/Library/Rime"; \
-	$(MAKE) mac
+	@./scripts/boot-mac.sh
 
 boot-server:
-	@if [ "$(UNAME_S)" != "Linux" ]; then \
-		echo "Error: boot-server requires Linux." >&2; \
-		exit 1; \
-	fi
-	@set -e; \
-	ARCH="$$(uname -m)"; \
-	case "$$ARCH" in \
-		x86_64|amd64) SUFFIX=amd64 ;; \
-		aarch64|arm64) SUFFIX=arm64 ;; \
-		*) echo "Error: unsupported architecture: $$ARCH" >&2; exit 1 ;; \
-	esac; \
-	FILE="toolkit-$$SUFFIX.tar.gz"; \
-	URL="https://github.com/thysrael/dotfiles/releases/latest/download/$$FILE"; \
-	DEST="$(HOME)/.local/bin"; \
-	mkdir -p "$$DEST"; \
-	curl -LfsS "$$URL" | tar -xz -C "$$DEST"; \
-	echo "Installed $$FILE to $$DEST"; \
-	"$$DEST/rg" --version; \
-	"$$DEST/lazygit" --version; \
-	"$$DEST/opencode" --version; \
-	$(MAKE) server
+	@./scripts/boot-server.sh
+
+init-server:
+	@printf 'SSH host: '; read ssh_host; ./scripts/init-server.sh "$$ssh_host"
 
 mac: pc rime-mac karabiner aerospace zed
 
@@ -86,7 +46,7 @@ pre:
 	mkdir -p $(XDG_STATE_HOME)
 
 gitconf:
-	ln -sfn $(PWD)/git $(XDG_CONFIG_HOME)/
+	ln -sfn $(CURDIR)/git $(XDG_CONFIG_HOME)/
 
 clean-gitconf:
 	rm -r $(XDG_CONFIG_HOME)/git
@@ -97,15 +57,15 @@ zsh:
 	@if [ "$$(basename "$$SHELL")" != "zsh" ]; then \
 		chsh -s $$(which zsh); \
 	fi
-	ln -sfn $(PWD)/zsh $(XDG_CONFIG_HOME)/
-	ln -sfn $(PWD)/zsh/.zshenv ~/
+	ln -sfn $(CURDIR)/zsh $(XDG_CONFIG_HOME)/
+	ln -sfn $(CURDIR)/zsh/.zshenv ~/
 
 clean-zsh:
 	rm $(XDG_CONFIG_HOME)/zsh
 	rm ~/.zshenv
 
 vim:
-	ln -sfn $(PWD)/vim $(XDG_CONFIG_HOME)/
+	ln -sfn $(CURDIR)/vim $(XDG_CONFIG_HOME)/
 
 clean-vim:
 	rm -r $(XDG_CONFIG_HOME)/vim
@@ -122,26 +82,26 @@ conda:
 	rm ./Miniconda3-latest-Linux-x86_64.sh.1
 
 tmux:
-	ln -sfn $(PWD)/tmux $(XDG_CONFIG_HOME)/tmux
+	ln -sfn $(CURDIR)/tmux $(XDG_CONFIG_HOME)/tmux
 
 clean-tmux:
 	rm -r $(XDG_CONFIG_HOME)/tmux
 
 font:
-	ln -sfn $(PWD)/fontconfig $(XDG_CONFIG_HOME)/
+	ln -sfn $(CURDIR)/fontconfig $(XDG_CONFIG_HOME)/
 
 clean-font:
 	rm -r $(XDG_CONFIG_HOME)/fontconfig
 
 kitty:
-	ln -sfn $(PWD)/kitty $(XDG_CONFIG_HOME)/
+	ln -sfn $(CURDIR)/kitty $(XDG_CONFIG_HOME)/
 
 clean-kitty:
 	rm -r $(XDG_CONFIG_HOME)/kitty
 
 rime-linux:
 	@if [ -d $(XDG_DATA_HOME)/fcitx5/rime ]; then \
-		git -C $(PWD) submodule update --init --recursive rime/rime-frost; \
+		git -C $(CURDIR) submodule update --init --recursive rime/rime-frost; \
 		for src in $(RIME_FROST_SUBMODULE)/*; do \
 			name=$$(basename "$$src"); \
 			case "$$name" in \
@@ -159,14 +119,14 @@ rime-linux:
 			rm -rf "$$lua_target/$$name"; \
 			ln -sfn "$$src" "$$lua_target/$$name"; \
 		done; \
-		for src in $(PWD)/rime/lua/*; do \
+		for src in $(CURDIR)/rime/lua/*; do \
 			name=$$(basename "$$src"); \
 			rm -rf "$$lua_target/$$name"; \
 			ln -sfn "$$src" "$$lua_target/$$name"; \
 		done; \
-		ln -sfn $(PWD)/rime/default.linux.custom.yaml $(XDG_DATA_HOME)/fcitx5/rime/default.custom.yaml; \
-		ln -sfn $(PWD)/rime/rime_frost.custom.yaml $(XDG_DATA_HOME)/fcitx5/rime/; \
-		ln -sfn $(PWD)/rime/custom_phrase.txt $(XDG_DATA_HOME)/fcitx5/rime/; \
+		ln -sfn $(CURDIR)/rime/default.linux.custom.yaml $(XDG_DATA_HOME)/fcitx5/rime/default.custom.yaml; \
+		ln -sfn $(CURDIR)/rime/rime_frost.custom.yaml $(XDG_DATA_HOME)/fcitx5/rime/; \
+		ln -sfn $(CURDIR)/rime/custom_phrase.txt $(XDG_DATA_HOME)/fcitx5/rime/; \
 	else \
 		echo "You havn't install Rime"; \
 	fi
@@ -183,7 +143,7 @@ clean-rime-linux:
 		target="$(XDG_DATA_HOME)/fcitx5/rime/$$name"; \
 		if [ -L "$$target" ]; then rm "$$target"; fi; \
 	done
-	@for src in $(RIME_FROST_SUBMODULE)/lua/* $(PWD)/rime/lua/*; do \
+	@for src in $(RIME_FROST_SUBMODULE)/lua/* $(CURDIR)/rime/lua/*; do \
 		name=$$(basename "$$src"); \
 		target="$(XDG_DATA_HOME)/fcitx5/rime/lua/$$name"; \
 		if [ -L "$$target" ]; then rm "$$target"; fi; \
@@ -191,7 +151,7 @@ clean-rime-linux:
 
 rime-mac:
 	@if [ -d $(HOME)/Library/Rime ]; then \
-		git -C $(PWD) submodule update --init --recursive rime/rime-frost; \
+		git -C $(CURDIR) submodule update --init --recursive rime/rime-frost; \
 		for src in $(RIME_FROST_SUBMODULE)/*; do \
 			name=$$(basename "$$src"); \
 			case "$$name" in \
@@ -209,15 +169,15 @@ rime-mac:
 			rm -rf "$$lua_target/$$name"; \
 			ln -sfn "$$src" "$$lua_target/$$name"; \
 		done; \
-		for src in $(PWD)/rime/lua/*; do \
+		for src in $(CURDIR)/rime/lua/*; do \
 			name=$$(basename "$$src"); \
 			rm -rf "$$lua_target/$$name"; \
 			ln -sfn "$$src" "$$lua_target/$$name"; \
 		done; \
-		ln -sfn $(PWD)/rime/default.mac.custom.yaml $(HOME)/Library/Rime/default.custom.yaml; \
-		ln -sfn $(PWD)/rime/squirrel.custom.yaml $(HOME)/Library/Rime/; \
-		ln -sfn $(PWD)/rime/rime_frost.custom.yaml $(HOME)/Library/Rime/; \
-		ln -sfn $(PWD)/rime/custom_phrase.txt $(HOME)/Library/Rime/; \
+		ln -sfn $(CURDIR)/rime/default.mac.custom.yaml $(HOME)/Library/Rime/default.custom.yaml; \
+		ln -sfn $(CURDIR)/rime/squirrel.custom.yaml $(HOME)/Library/Rime/; \
+		ln -sfn $(CURDIR)/rime/rime_frost.custom.yaml $(HOME)/Library/Rime/; \
+		ln -sfn $(CURDIR)/rime/custom_phrase.txt $(HOME)/Library/Rime/; \
 		if [ -x "/Library/Input Methods/Squirrel.app/Contents/MacOS/rime_deployer" ]; then \
 			"/Library/Input Methods/Squirrel.app/Contents/MacOS/rime_deployer" --build $(HOME)/Library/Rime "/Library/Input Methods/Squirrel.app/Contents/SharedSupport" $(HOME)/Library/Rime/build; \
 		fi; \
@@ -238,39 +198,39 @@ clean-rime-mac:
 		target="$(HOME)/Library/Rime/$$name"; \
 		if [ -L "$$target" ]; then rm "$$target"; fi; \
 	done
-	@for src in $(RIME_FROST_SUBMODULE)/lua/* $(PWD)/rime/lua/*; do \
+	@for src in $(RIME_FROST_SUBMODULE)/lua/* $(CURDIR)/rime/lua/*; do \
 		name=$$(basename "$$src"); \
 		target="$(HOME)/Library/Rime/lua/$$name"; \
 		if [ -L "$$target" ]; then rm "$$target"; fi; \
 	done
 
 karabiner:
-	ln -sfn $(PWD)/karabiner $(XDG_CONFIG_HOME)/
+	ln -sfn $(CURDIR)/karabiner $(XDG_CONFIG_HOME)/
 
 clean-karabiner:
 	rm -r $(XDG_CONFIG_HOME)/karabiner
 
 yazi:
-	ln -sfn $(PWD)/yazi $(XDG_CONFIG_HOME)/
+	ln -sfn $(CURDIR)/yazi $(XDG_CONFIG_HOME)/
 	ya pkg install
 
 clean-yazi:
 	rm $(XDG_CONFIG_HOME)/yazi
 
 hammerspoon:
-	ln -sfn $(PWD)/hammerspoon $(XDG_CONFIG_HOME)/
+	ln -sfn $(CURDIR)/hammerspoon $(XDG_CONFIG_HOME)/
 
 clean-hammerspoon:
 	rm $(XDG_CONFIG_HOME)/hammerspoon
 
 clang-format:
-	ln -sfn $(PWD)/clang-format/.clang-format $(HOME)/
+	ln -sfn $(CURDIR)/clang-format/.clang-format $(HOME)/
 
 clean-clang-format:
 	rm $(HOME)/.clang-format
 
 aerospace:
-	ln -sfn $(PWD)/aerospace $(XDG_CONFIG_HOME)/
+	ln -sfn $(CURDIR)/aerospace $(XDG_CONFIG_HOME)/
 
 clean-aerospace:
 	rm $(XDG_CONFIG_HOME)/aerospace
@@ -289,26 +249,26 @@ codex:
 		echo "Error: $(CODEX_HOME)/rules exists and is not a symlink"; \
 		exit 1; \
 	fi
-	ln -sfn "$(PWD)/codex/$(CODEX_PROFILE).config.toml" "$(CODEX_PROFILE_CONFIG)"
-	ln -sfn "$(PWD)/codex/rules" "$(CODEX_HOME)/rules"
+	ln -sfn "$(CURDIR)/codex/$(CODEX_PROFILE).config.toml" "$(CODEX_PROFILE_CONFIG)"
+	ln -sfn "$(CURDIR)/codex/rules" "$(CODEX_HOME)/rules"
 
 clean-codex:
-	@if [ "$$(readlink "$(CODEX_PROFILE_CONFIG)" 2>/dev/null)" = "$(PWD)/codex/$(CODEX_PROFILE).config.toml" ]; then \
+	@if [ "$$(readlink "$(CODEX_PROFILE_CONFIG)" 2>/dev/null)" = "$(CURDIR)/codex/$(CODEX_PROFILE).config.toml" ]; then \
 		rm -f "$(CODEX_PROFILE_CONFIG)"; \
 	fi
-	@if [ "$$(readlink "$(CODEX_HOME)/rules" 2>/dev/null)" = "$(PWD)/codex/rules" ]; then \
+	@if [ "$$(readlink "$(CODEX_HOME)/rules" 2>/dev/null)" = "$(CURDIR)/codex/rules" ]; then \
 		rm -f "$(CODEX_HOME)/rules"; \
 	fi
 
 opencode:
-	ln -sfn $(PWD)/opencode $(XDG_CONFIG_HOME)/
-	npm ci --prefix $(PWD)/opencode
+	ln -sfn $(CURDIR)/opencode $(XDG_CONFIG_HOME)/
+	npm ci --prefix $(CURDIR)/opencode
 
 clean-opencode:
 	rm -r $(XDG_CONFIG_HOME)/opencode
 
 npm:
-	ln -sfn $(PWD)/npm $(XDG_CONFIG_HOME)/npm
+	ln -sfn $(CURDIR)/npm $(XDG_CONFIG_HOME)/npm
 
 clean-npm:
 	rm -r $(XDG_CONFIG_HOME)/npm
@@ -321,7 +281,7 @@ vscode:
 			echo "Skip: $$target already exists and is not a symlink"; \
 			continue; \
 		fi; \
-		ln -sfn "$(PWD)/vscode/$$file" "$$target"; \
+		ln -sfn "$(CURDIR)/vscode/$$file" "$$target"; \
 	done
 
 clean-vscode:
@@ -332,7 +292,7 @@ zed:
 	@if [ -e "$(ZED_CONFIG_DIR)" ] && [ ! -L "$(ZED_CONFIG_DIR)" ]; then \
 		echo "Skip: $(ZED_CONFIG_DIR) already exists and is not a symlink"; \
 	else \
-		ln -sfn "$(PWD)/zed" "$(ZED_CONFIG_DIR)"; \
+		ln -sfn "$(CURDIR)/zed" "$(ZED_CONFIG_DIR)"; \
 	fi
 
 clean-zed:
