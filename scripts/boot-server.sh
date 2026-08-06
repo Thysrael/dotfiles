@@ -23,7 +23,8 @@ url="https://github.com/thysrael/dotfiles/releases/latest/download/$file"
 dest="$HOME/.local/bin"
 
 mkdir -p "$dest"
-curl -LfsS "$url" | tar -xz -C "$dest"
+printf 'Downloading %s...\n' "$file"
+curl -Lf --progress-bar "$url" | tar -xz -C "$dest"
 printf 'Installed %s to %s\n' "$file" "$dest"
 "$dest/rg" --version
 "$dest/lazygit" --version
