@@ -1,5 +1,5 @@
-tap "anomalyco/tap"
-tap "nikitabobko/tap"
+tap "anomalyco/tap", trusted: { formula: "opencode" }
+tap "nikitabobko/tap", trusted: { cask: "aerospace" }
 
 brew "bat"
 brew "clang-format"
