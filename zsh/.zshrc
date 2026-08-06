@@ -34,6 +34,9 @@ source $ZSH/alias.zsh
 # terminal
 source $ZSH/terminal.zsh
 
+# proxy
+source $ZSH/proxy.zsh
+
 # fzf
 source $ZSH/fzf.zsh
 
