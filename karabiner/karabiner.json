@@ -280,7 +280,7 @@
                         ]
                     },
                     {
-                        "description": "Map command-j/k to reverse/forward ctrl-tab navigation",
+                        "description": "Map command-j/k to forward/reverse ctrl-tab navigation",
                         "manipulators": [
                             {
                                 "from": {
@@ -293,7 +293,7 @@
                                 "to": [
                                     {
                                         "key_code": "tab",
-                                        "modifiers": ["left_control", "left_shift"]
+                                        "modifiers": ["left_control"]
                                     }
                                 ],
                                 "type": "basic"
@@ -309,7 +309,7 @@
                                 "to": [
                                     {
                                         "key_code": "tab",
-                                        "modifiers": ["left_control"]
+                                        "modifiers": ["left_control", "left_shift"]
                                     }
                                 ],
                                 "type": "basic"
