@@ -30,9 +30,11 @@ cd dotfiles
 ### 2. Dependencies
 
 The core system depends only on:
+
 - [make](https://www.gnu.org/software/make/)
 
 **Optional Enhancements:**
+
 The following modern CLI tools are recommended for the full experience.
 
 On a Linux server, install these tools and deploy the server configuration with:
