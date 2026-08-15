@@ -51,6 +51,18 @@ pr() {
                 -o ServerAliveCountMax=3 \
                 -R "127.0.0.1:${remote_port}:127.0.0.1:${local_port}" \
                 "$ssh_host" || return
+
+            if [[ $OSTYPE == darwin* ]]; then
+                local check_output master_pid
+                check_output=$(command ssh -S "$socket" -O check "$ssh_host" 2>&1)
+                if [[ $check_output =~ 'pid=([0-9]+)' ]]; then
+                    master_pid=$match[1]
+                    command caffeinate -s -t 259200 -w "$master_pid" &>/dev/null &!
+                else
+                    print -u2 'Warning: could not bind caffeinate to the SSH tunnel.'
+                fi
+            fi
+
             print "Remote proxy: http://127.0.0.1:$remote_port"
             ;;
         status)
