@@ -365,7 +365,7 @@ if.app-id = 'md.obsidian'
 run = 'move-node-to-workspace N'
 
 [[on-window-detected]]
-if.app-id = 'com.kingsoft.wpsoffice.mac.global'
+if.app-id = 'com.kingsoft.wpsoffice.mac'
 run = 'move-node-to-workspace N'
 
 [[on-window-detected]]
