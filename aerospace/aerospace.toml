@@ -306,13 +306,16 @@ fi
 
     # Toggle Browser: if on B go back, else launch/switch to B
     f11 = '''exec-and-forget bash -c '
+browser="Safari"
+# browser="Google Chrome"
+
 current=$(aerospace list-workspaces --focused)
 if [ "$current" = "B" ]; then
     aerospace workspace-back-and-forth
-elif pgrep -x "Google Chrome" > /dev/null 2>&1; then
+elif pgrep -x "$browser" > /dev/null 2>&1; then
     aerospace workspace B
 else
-    open -a "Google Chrome"
+    open -a "$browser"
     sleep 0.8
     aerospace workspace B
 fi
