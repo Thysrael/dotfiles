@@ -1,8 +1,8 @@
 [[mgr.prepend_keymap]]
-on  = [ "Y" ]
-# run = [ 'shell -- osascript -e "set the clipboard to (POSIX file \"$@\")"', "yank" ]
-run = [ "yank", "plugin clippy" ]
-for = "macos"
+on   = "Y"
+for  = "macos"
+run  = [ "yank", "shell -- clippy %y" ]
+desc = "Copy files to macOS clipboard"
 
 [[mgr.prepend_keymap]]
 on   = [ "z", "a" ]
