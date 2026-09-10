@@ -376,6 +376,10 @@ if.app-id = 'com.omnigroup.OmniGraffle7'
 run = 'move-node-to-workspace N'
 
 [[on-window-detected]]
+if.app-id = 'com.apple.mail'
+run = 'move-node-to-workspace N'
+
+[[on-window-detected]]
 if.app-name-regex-substring = 'Zotero'
 run = 'move-node-to-workspace Z'
 
