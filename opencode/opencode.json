@@ -179,6 +179,8 @@
       "git add *": "ask",
       "git commit *": "ask",
       "git push *": "ask",
+      "git pull": "ask",
+      "git pull *": "ask",
       "git reset *": "ask",
       "git stash *": "ask",
       "git checkout *": "ask",
@@ -187,13 +189,19 @@
       "git revert *": "ask",
       "git cherry-pick *": "ask",
       "git rebase *": "ask",
-      "git merge *": "ask"
+      "git merge *": "ask",
+      "git stash list": "allow",
+      "git stash list *": "allow",
+      "git stash show": "allow",
+      "git stash show *": "allow"
     },
     "zsh": {
       "*": "allow",
       "git add *": "ask",
       "git commit *": "ask",
       "git push *": "ask",
+      "git pull": "ask",
+      "git pull *": "ask",
       "git reset *": "ask",
       "git stash *": "ask",
       "git checkout *": "ask",
@@ -202,7 +210,11 @@
       "git revert *": "ask",
       "git cherry-pick *": "ask",
       "git rebase *": "ask",
-      "git merge *": "ask"
+      "git merge *": "ask",
+      "git stash list": "allow",
+      "git stash list *": "allow",
+      "git stash show": "allow",
+      "git stash show *": "allow"
     },
     "external_directory": "allow",
     "webfetch": "allow"
