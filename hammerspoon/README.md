@@ -12,6 +12,9 @@ configured on this Mac. The Makefile does not change application preferences.
 Reload the configuration after deployment. Grant Accessibility permission in
 System Settings → Privacy & Security → Accessibility.
 
+F10 (messaging) and F12 (Kitty) are handled by AeroSpace. Hammerspoon does not
+register these shortcuts, avoiding competing window-switching behavior.
+
 ## Eudic four-finger tap
 
 `init.lua` loads `eudic.lua`. It recognizes a short, stationary four-finger tap
