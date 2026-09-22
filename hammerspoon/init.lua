@@ -67,7 +67,9 @@ hs.hotkey.bind({}, "F10", function()
     end
 end)
 
--- Auto reload configuration when init.lua is updated
+dofile(hs.configdir .. "/eudic.lua")
+
+-- Auto reload configuration when Lua files are updated
 function reloadConfig(files)
     doReload = false
     for _, file in pairs(files) do
