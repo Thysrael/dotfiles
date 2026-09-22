@@ -311,8 +311,8 @@ fi
 
     # Toggle Browser: if on B go back, else launch/switch to B
     f11 = '''exec-and-forget bash -c '
-browser="Safari"
-# browser="Google Chrome"
+# browser="Safari"
+browser="Google Chrome"
 
 current=$(aerospace list-workspaces --focused)
 if [ "$current" = "B" ]; then
