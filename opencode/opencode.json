@@ -219,8 +219,7 @@
     "external_directory": "allow",
     "webfetch": "allow"
   },
-  "plugin": [
-    "opencode-pty",
+  "plugins": [
     "@mohak34/opencode-notifier"
   ],
   "mcp": {
@@ -253,45 +252,6 @@
     "plan": {
       "options": {
         "store": false
-      }
-    },
-    "ask": {
-      "description": "Read-only primary agent for questions, explanations, and codebase investigation without write permissions",
-      "mode": "primary",
-      "model": "openai-horizon/gpt-5.4",
-      "prompt": "You are a read-only Q&A agent. Use this agent for asking questions, explanations, codebase reading, documentation lookup, and codebase investigation. You may run only read-only inspection commands allowed by permissions. Do not edit files, create files, install dependencies, make commits, or perform side-effecting actions. If the user asks for changes, explain that this agent is read-only and suggest switching to a writing-capable agent.",
-      "permission": {
-        "read": "allow",
-        "glob": "allow",
-        "grep": "allow",
-        "lsp": "allow",
-        "webfetch": "allow",
-        "websearch": "allow",
-        "edit": "deny",
-        "bash": "allow",
-        "zsh": "allow",
-        "external_directory": "allow",
-        "task": "deny",
-        "skill": "allow"
-      }
-    },
-    "cheap": {
-      "description": "Cheap helper for lightweight drafting, web summarization, term lookup, and initial codebase exploration",
-      "mode": "subagent",
-      "model": "github-copilot/gemini-3-flash-preview",
-      "prompt": "You are a low-cost helper for lightweight tasks only. Good tasks: drafting docs, rewriting text, explaining terms, summarizing web pages, extracting facts, and initial codebase exploration. Prefer concise outputs. Do not make architectural decisions. Do not perform risky or broad code changes. If the task needs deeper judgment, uncertain technical conclusions, or non-trivial implementation, say so briefly and hand it back.",
-      "permission": {
-        "read": "allow",
-        "glob": "allow",
-        "grep": "allow",
-        "lsp": "allow",
-        "webfetch": "allow",
-        "websearch": "allow",
-        "bash": "allow",
-        "edit": "allow",
-        "external_directory": "deny",
-        "task": "allow",
-        "skill": "allow"
       }
     }
   },
