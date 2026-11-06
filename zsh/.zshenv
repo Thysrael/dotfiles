@@ -20,12 +20,20 @@ export NPM_CONFIG_CACHE="$XDG_CACHE_HOME"/npm
 export NPM_CONFIG_PREFIX="$XDG_DATA_HOME"/npm
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
 
+# Gradle / Android (adb still needs the ~/.android compatibility symlink).
+export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
+export ANDROID_USER_HOME="$XDG_DATA_HOME"/android
+export ANDROID_EMULATOR_HOME="$ANDROID_USER_HOME"
+export ANDROID_AVD_HOME="$ANDROID_USER_HOME"/avd
+
 export TERMINFO="$XDG_DATA_HOME"/terminfo
 export TERMINFO_DIRS="$XDG_DATA_HOME"/terminfo:/usr/share/terminfo
 
 export DOTNET_CLI_HOME="$XDG_DATA_HOME"/dotnet
 
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
+# Matplotlib does not use XDG paths by default on macOS.
+export MPLCONFIGDIR="$XDG_CONFIG_HOME"/matplotlib
 export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
 export W3M_DIR="$XDG_DATA_HOME"/w3m
 
