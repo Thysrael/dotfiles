@@ -1,6 +1,10 @@
 -- AeroSpace owns the F10/F12 window-switching shortcuts.
 dofile(hs.configdir .. "/eudic.lua")
 
+-- Allow the hs CLI to inspect and toggle the drag-copy workaround.
+require("hs.ipc")
+dofile(hs.configdir .. "/drag-copy.lua")
+
 -- Auto reload configuration when Lua files are updated
 function reloadConfig(files)
     doReload = false
