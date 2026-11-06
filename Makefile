@@ -1,4 +1,5 @@
 .PHONY: boot-mac boot-server init-server mac linux pc server
+.PHONY: opencode-slides
 .PHONY: gitconf zsh vim custom conda tmux font kitty rime-linux rime-mac karabiner yazi hammerspoon clang-format aerospace codex opencode npm vscode zed
 .PHONY: clean-gitconfig clean-zsh clean-vim clean-tmux clean-font clean-kitty clean-karabiner clean-yazi clean-hammerspoon clean-clang-format clean-aerospace clean-codex clean-opencode clean-npm clean-vscode clean-zed
 
@@ -263,6 +264,10 @@ clean-codex:
 opencode:
 	ln -sfn $(CURDIR)/opencode $(XDG_CONFIG_HOME)/
 	npm ci --prefix $(CURDIR)/opencode
+
+opencode-slides:
+	npm ci --prefix "$(CURDIR)/opencode/skills/slides"
+	uv sync --project "$(CURDIR)/opencode/skills/slides" --locked
 
 clean-opencode:
 	rm -r $(XDG_CONFIG_HOME)/opencode

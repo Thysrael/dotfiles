@@ -1,0 +1,20 @@
+{
+  "name": "opencode-slides-runtime",
+  "version": "1.0.0",
+  "private": true,
+  "type": "commonjs",
+  "dependencies": {
+    "fontkit": "2.0.4",
+    "linebreak": "1.1.0",
+    "mathjax-full": "3.2.2",
+    "pptxgenjs": "4.0.1",
+    "prismjs": "1.30.0",
+    "skia-canvas": "4.0.0"
+  },
+  "overrides": {
+    "@xmldom/xmldom": "0.9.12",
+    "pptxgenjs": {
+      "image-size": "2.0.4"
+    }
+  }
+}
